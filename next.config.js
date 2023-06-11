@@ -1,4 +1,5 @@
-/** @type {import('next').NextConfig} */
+const withCSS = require("@zeit/next-css");
+
 const nextConfig = {
 	experimental: {
 		appDir: true,
@@ -8,4 +9,4 @@ const nextConfig = {
 	},
 };
 
-module.exports = nextConfig;
+module.exports = withCSS(nextConfig);
