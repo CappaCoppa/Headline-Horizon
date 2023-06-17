@@ -2,10 +2,14 @@ import Image from "next/image";
 export const metadata = { title: "HH - Home" };
 
 const getData = async () => {
-	const res = await fetch(`${process.env.API_URL}/articles`, {
-		cache: "no-cache",
-	});
-	return await res.json();
+	try {
+		const res = await fetch(`${process.env.API_URL}/articles`, {
+			cache: "no-cache",
+		});
+		return await res.json();
+	} catch (err) {
+		console.log(err);
+	}
 };
 
 const mappedTopArticles = (array) =>
