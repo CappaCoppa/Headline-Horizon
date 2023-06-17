@@ -2,7 +2,7 @@ import Image from "next/image";
 export const metadata = { title: "HH - Home" };
 
 const getData = async () => {
-	const res = await fetch(`${process.env.API_URI}/api/articles`, {
+	const res = await fetch(`${process.env.API_URL}/api/articles`, {
 		cache: "no-cache",
 	});
 	return await res.json();
