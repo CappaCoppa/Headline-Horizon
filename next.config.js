@@ -2,9 +2,10 @@
 const nextConfig = {
 	experimental: {
 		appDir: true,
+		topLevelAwait: true,
 	},
 	images: {
-		domains: ["static.foxbusiness.com", "a57.foxnews.com"],
+		domains: ["cdn.discordapp.com"],
 	},
 };
 
