@@ -95,6 +95,7 @@ const mappingNormalArticles = (array) =>
 
 export default async function Home() {
 	const objectsArray = await getData();
+	console.log(`this is the objectsArray ${objectsArray}`);
 	return (
 		<main className="">
 			<div className="py-16 bg-black-5 shadow-2xl"></div>
