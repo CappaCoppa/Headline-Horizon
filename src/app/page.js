@@ -93,9 +93,9 @@ const mappingNormalArticles = (array) =>
 		);
 	});
 
-export default function Home() {
+export default async function Home() {
 	try {
-		const objectsArray = getData();
+		const objectsArray = await getData();
 		console.log("this is the response =>>>>> " + objectsArray);
 		return (
 			<main className="">
