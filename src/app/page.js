@@ -110,7 +110,7 @@ export default function Home({ objectsArray }) {
 Home.getInitialProps = async () => {
 	try {
 		const objectsArray = await getData();
-		return { objectsArray };
+		return objectsArray;
 	} catch (err) {
 		console.log(err);
 	}
