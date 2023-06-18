@@ -4,7 +4,7 @@ export const metadata = { title: "HH - Home" };
 const getData = async () => {
 	try {
 		const res = await fetch(`${process.env.API_URL}/articles`);
-		return await JSON.parse(res);
+		return await res.json();
 	} catch (err) {
 		console.log(err);
 	}
@@ -93,8 +93,16 @@ const mappingNormalArticles = (array) =>
 		);
 	});
 
-export default async function Home() {
+export async function getStaticProps() {
 	const objectsArray = await getData();
+	return {
+		props: {
+			objectsArray,
+		},
+	};
+}
+
+export default async function Home({ objectsArray }) {
 	console.log(`this is the objectsArray ${objectsArray}`);
 	return (
 		<main className="">
