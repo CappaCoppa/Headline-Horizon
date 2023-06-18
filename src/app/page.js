@@ -93,8 +93,7 @@ const mappingNormalArticles = (array) =>
 		);
 	});
 
-export default async function Home() {
-	const objectsArray = await getData();
+export default function Home({ objectsArray }) {
 	return (
 		<main className="">
 			<div className="py-16 bg-black-5 shadow-2xl"></div>
@@ -107,3 +106,12 @@ export default async function Home() {
 		</main>
 	);
 }
+
+Home.getInitialProps = async () => {
+	try {
+		const objectsArray = await getData();
+		return { objectsArray };
+	} catch (err) {
+		console.log(err);
+	}
+};
