@@ -93,7 +93,8 @@ const mappingNormalArticles = (array) =>
 		);
 	});
 
-export default function Home(objectsArray) {
+export default function Home({ objectsArray }) {
+	console.log("this is the response =>>>>> " + objectsArray);
 	return (
 		<main className="">
 			<div className="py-16 bg-black-5 shadow-2xl"></div>
@@ -110,7 +111,7 @@ export default function Home(objectsArray) {
 Home.getInitialProps = async () => {
 	try {
 		const objectsArray = await getData();
-		return objectsArray;
+		return { objectsArray };
 	} catch (err) {
 		console.log(err);
 	}
