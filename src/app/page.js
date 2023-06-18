@@ -1,17 +1,14 @@
 import Image from "next/image";
 export const metadata = { title: "HH - Home" };
 
-async function getData() {
+const getData = async () => {
 	try {
-		const res = await fetch(process.env.API_URL);
-		const text = await res.text();
-		console.log("Raw response:", text);
-		const data = JSON.parse(text);
-		return data;
-	} catch (error) {
-		console.error("Error in getData:", error);
+		const res = await fetch(`${process.env.API_URL}/articles`);
+		return await res.json();
+	} catch (err) {
+		console.log(err);
 	}
-}
+};
 
 const mappedTopArticles = (array) =>
 	array.map((articleObject, index) => {
@@ -96,18 +93,22 @@ const mappingNormalArticles = (array) =>
 		);
 	});
 
-export default async function Home() {
-	const objectsArray = await getData();
-	console.log("this is the response =>>>>> " + objectsArray);
-	return (
-		<main className="">
-			<div className="py-16 bg-black-5 shadow-2xl"></div>
-			<div className="p-64 bg-black-opacity-0.50 grid grid-cols-3 grid-rows-2 gap-24">
-				{mappedTopArticles(objectsArray.slice(0, 6))}
-			</div>
-			<div className="p-64 bg-black-5 grid grid-cols-3 gap-16">
-				{mappingNormalArticles(objectsArray)}
-			</div>
-		</main>
-	);
+export default function Home() {
+	try {
+		const objectsArray = getData();
+		console.log("this is the response =>>>>> " + objectsArray);
+		return (
+			<main className="">
+				<div className="py-16 bg-black-5 shadow-2xl"></div>
+				<div className="p-64 bg-black-opacity-0.50 grid grid-cols-3 grid-rows-2 gap-24">
+					{mappedTopArticles(objectsArray.slice(0, 6))}
+				</div>
+				<div className="p-64 bg-black-5 grid grid-cols-3 gap-16">
+					{mappingNormalArticles(objectsArray)}
+				</div>
+			</main>
+		);
+	} catch (err) {
+		console.log(err);
+	}
 }
