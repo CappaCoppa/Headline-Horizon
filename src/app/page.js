@@ -1,19 +1,17 @@
 import Image from "next/image";
 export const metadata = { title: "HH - Home" };
 
-const getData = async () => {
+async function getData() {
 	try {
-		const res = await fetch(`${process.env.API_URL}/articles`);
-		if (!res.ok) {
-			console.error("Error fetching data:", res.status, res.statusText);
-			return [];
-		}
-		return await res.json();
-	} catch (err) {
-		console.error("Error in getData:", err);
-		return [];
+		const res = await fetch(process.env.API_URL);
+		const text = await res.text();
+		console.log("Raw response:", text);
+		const data = JSON.parse(text);
+		return data;
+	} catch (error) {
+		console.error("Error in getData:", error);
 	}
-};
+}
 
 const mappedTopArticles = (array) =>
 	array.map((articleObject, index) => {
