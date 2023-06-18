@@ -4,7 +4,7 @@ export const metadata = { title: "HH - Home" };
 const getData = async () => {
 	try {
 		const res = await fetch(`${process.env.API_URL}/articles`);
-		return await res.json();
+		return await JSON.parse(res);
 	} catch (err) {
 		console.log(err);
 	}
