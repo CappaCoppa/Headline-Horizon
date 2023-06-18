@@ -98,7 +98,8 @@ const mappingNormalArticles = (array) =>
 		);
 	});
 
-export default function Home({ objectsArray }) {
+export default async function Home() {
+	const objectsArray = await getData();
 	console.log("this is the response =>>>>> " + objectsArray);
 	return (
 		<main className="">
@@ -112,12 +113,3 @@ export default function Home({ objectsArray }) {
 		</main>
 	);
 }
-
-Home.getInitialProps = async () => {
-	try {
-		const objectsArray = await getData();
-		return { objectsArray };
-	} catch (err) {
-		console.log(err);
-	}
-};
