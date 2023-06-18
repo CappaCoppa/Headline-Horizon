@@ -4,9 +4,14 @@ export const metadata = { title: "HH - Home" };
 const getData = async () => {
 	try {
 		const res = await fetch(`${process.env.API_URL}/articles`);
+		if (!res.ok) {
+			console.error("Error fetching data:", res.status, res.statusText);
+			return [];
+		}
 		return await res.json();
 	} catch (err) {
-		console.log(err);
+		console.error("Error in getData:", err);
+		return [];
 	}
 };
 
