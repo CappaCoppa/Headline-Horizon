@@ -93,7 +93,7 @@ const mappingNormalArticles = (array) =>
 		);
 	});
 
-export default function Home({ objectsArray }) {
+export default function Home(objectsArray) {
 	return (
 		<main className="">
 			<div className="py-16 bg-black-5 shadow-2xl"></div>
