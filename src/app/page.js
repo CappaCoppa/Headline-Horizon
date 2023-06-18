@@ -93,17 +93,8 @@ const mappingNormalArticles = (array) =>
 		);
 	});
 
-export async function getStaticProps() {
+export default async function Home() {
 	const objectsArray = await getData();
-	return {
-		props: {
-			objectsArray,
-		},
-	};
-}
-
-export default async function Home({ objectsArray }) {
-	console.log(`this is the objectsArray ${objectsArray}`);
 	return (
 		<main className="">
 			<div className="py-16 bg-black-5 shadow-2xl"></div>
