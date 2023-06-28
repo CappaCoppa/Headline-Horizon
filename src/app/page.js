@@ -53,10 +53,11 @@ const mappedTopArticles = (array) =>
 			);
 		} else {
 			return (
-				<div className="hover:bg-black-opacity-0.30 cursor-pointer transition ease-in-out p-8">
+				<div
+					className="hover:bg-black-opacity-0.30 cursor-pointer transition ease-in-out p-8"
+					key={index}>
 					<Link
-						href={`${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`}
-						key={index}>
+						href={`${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`}>
 						<div className="relative">
 							<Image
 								width="600"
@@ -80,10 +81,11 @@ const mappedTopArticles = (array) =>
 const mappingNormalArticles = (array) =>
 	array.map((articleObject, index) => {
 		return (
-			<div className=" flex flex-col justify-between cursor-pointer transition ease-in-out hover:bg-black-10 p-8">
+			<div
+				className=" flex flex-col justify-between cursor-pointer transition ease-in-out hover:bg-black-10 p-8 "
+				key={index}>
 				<Link
-					href={`${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`}
-					key={index}>
+					href={`${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`}>
 					<Image
 						width={600}
 						height={500}
