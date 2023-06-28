@@ -5,11 +5,7 @@ const nextConfig = {
 		topLevelAwait: true,
 	},
 	images: {
-		domains: [
-			"cdn.discordapp.com",
-			"static.foxbusiness.com",
-			"a57.foxnews.com",
-		],
+		domains: ["cdn.discordapp.com"],
 	},
 };
 
