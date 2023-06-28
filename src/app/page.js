@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 export const metadata = { title: "HH - Home" };
 import { Suspense } from "react";
-import LoadingAnimation from "./loadingAnimation";
+import Loading from "./loading";
 const getData = async () => {
 	try {
 		const res = await fetch(`${process.env.API_URL}/articles`, {
@@ -20,7 +20,7 @@ const mappedTopArticles = (array) =>
 
 		if (index === 0) {
 			return (
-				<Suspense key={index} fallback={LoadingAnimation()}>
+				<Suspense key={index} fallback={<Loading />}>
 					{/* @ts-expect-error Async Server Component  */}
 					<div className="row-span-2 col-span-2 cursor-pointer hover:bg-black-opacity-0.30 transition ease-in-out p-8 ">
 						<Link
@@ -56,7 +56,7 @@ const mappedTopArticles = (array) =>
 			);
 		} else {
 			return (
-				<Suspense key={index} fallback={LoadingAnimation()}>
+				<Suspense key={index} fallback={<Loading />}>
 					<div className="hover:bg-black-opacity-0.30 cursor-pointer transition ease-in-out p-8">
 						<Link
 							href={`${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`}>
@@ -84,7 +84,7 @@ const mappedTopArticles = (array) =>
 const mappingNormalArticles = (array) =>
 	array.map((articleObject, index) => {
 		return (
-			<Suspense key={index} fallback={LoadingAnimation()}>
+			<Suspense key={index} fallback={<Loading />}>
 				<div className=" flex flex-col justify-between cursor-pointer transition ease-in-out hover:bg-black-10 p-8">
 					<Link
 						href={`${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`}>
