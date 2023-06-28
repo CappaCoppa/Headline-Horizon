@@ -23,9 +23,8 @@ const mappingSubCategoryArticles = (array) => {
 						<Image
 							src={article.images[0].image_url}
 							alt={article.images[0].image_alt}
-							// width-min={300}
-							// height={300}
-							layout="fill"
+							width={300}
+							height={300}
 						/>
 					</div>
 					<div className="relative w-3/4 p-8">
