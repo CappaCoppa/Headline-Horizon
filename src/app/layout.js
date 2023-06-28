@@ -7,7 +7,7 @@ export const metadata = {
 		default: "HH",
 		template: "HH - %s",
 	},
-	description: "you whats uppp",
+	description: "yoo whats uppp",
 };
 
 export default function RootLayout({ children }) {
