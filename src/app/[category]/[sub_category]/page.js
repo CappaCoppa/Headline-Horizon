@@ -1,7 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Suspense } from "react";
-import Loading from "./loading";
 
 const getData = async (sub_category) => {
 	try {
@@ -17,7 +15,6 @@ const getData = async (sub_category) => {
 const mappingSubCategoryArticles = (array) => {
 	return array.map((article, index) => {
 		return (
-			// <Suspense key={index} fallback={<Loading />}>
 			<Link
 				href={`/${article.category}/${article.sub_category}/${article._id}`}>
 				<div
@@ -46,7 +43,6 @@ const mappingSubCategoryArticles = (array) => {
 					</div>
 				</div>
 			</Link>
-			// </Suspense>
 		);
 	});
 };
@@ -64,11 +60,6 @@ export default async function SubCategory({ params }) {
 				<div className="flex flex-row gap-16 py-24">
 					<div className="flex flex-col gap-8 py-24">
 						{mappingSubCategoryArticles(artiles)}
-						<div className="bg-primary my-32 cursor-pointer hover:bg-secondary transition-all ease-in-out">
-							<h5 className="uppercase font-semibold text-black-5 shadow-2xl p-8 text-center">
-								show more
-							</h5>
-						</div>
 					</div>
 					<div className="w-1/4"></div>
 				</div>
