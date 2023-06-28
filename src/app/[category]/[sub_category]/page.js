@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 const getData = async (sub_category) => {
 	try {
@@ -15,6 +17,7 @@ const getData = async (sub_category) => {
 const mappingSubCategoryArticles = (array) => {
 	return array.map((article, index) => {
 		return (
+			// <Suspense key={index} fallback={<Loading />}>
 			<Link
 				href={`/${article.category}/${article.sub_category}/${article._id}`}>
 				<div
@@ -43,6 +46,7 @@ const mappingSubCategoryArticles = (array) => {
 					</div>
 				</div>
 			</Link>
+			// </Suspense>
 		);
 	});
 };
@@ -66,7 +70,7 @@ export default async function SubCategory({ params }) {
 							</h5>
 						</div>
 					</div>
-					<div className=" bg-secondary w-1/4"></div>
+					<div className="w-1/4"></div>
 				</div>
 			</div>
 		</main>
