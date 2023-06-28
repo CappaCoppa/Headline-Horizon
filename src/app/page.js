@@ -3,7 +3,9 @@ import Link from "next/link";
 export const metadata = { title: "HH - Home" };
 const getData = async () => {
 	try {
-		const res = await fetch(`${process.env.API_URL}/articles`);
+		const res = await fetch(`${process.env.API_URL}/articles`, {
+			cache: "force-cache",
+		});
 		return await res.json();
 	} catch (err) {
 		console.log(err);
@@ -16,7 +18,9 @@ const mappedTopArticles = (array) =>
 
 		if (index === 0) {
 			return (
-				<div className="row-span-2 col-span-2 cursor-pointer hover:bg-black-opacity-0.30 transition ease-in-out p-8 ">
+				<div
+					className="row-span-2 col-span-2 cursor-pointer hover:bg-black-opacity-0.30 transition ease-in-out p-8 "
+					key={index}>
 					<Link
 						href={`${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`}>
 						<div className="relative">
@@ -51,7 +55,8 @@ const mappedTopArticles = (array) =>
 			return (
 				<div className="hover:bg-black-opacity-0.30 cursor-pointer transition ease-in-out p-8">
 					<Link
-						href={`${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`}>
+						href={`${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`}
+						key={index}>
 						<div className="relative">
 							<Image
 								width="600"
@@ -77,7 +82,8 @@ const mappingNormalArticles = (array) =>
 		return (
 			<div className=" flex flex-col justify-between cursor-pointer transition ease-in-out hover:bg-black-10 p-8">
 				<Link
-					href={`${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`}>
+					href={`${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`}
+					key={index}>
 					<Image
 						width={600}
 						height={500}

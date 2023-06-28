@@ -3,7 +3,9 @@ import Link from "next/link";
 
 const getData = async (sub_category) => {
 	try {
-		const res = await fetch(`${process.env.API_URL}/articles/${sub_category}`);
+		const res = await fetch(`${process.env.API_URL}/articles/${sub_category}`, {
+			next: { revalidate: 120 },
+		});
 		return await res.json();
 	} catch (err) {
 		console.log(`An error occured while fetching data from the server: ${err}`);
@@ -14,10 +16,9 @@ const mappingSubCategoryArticles = (array) => {
 	return array.map((article, index) => {
 		return (
 			<Link
-				href={`/${article.category}/${article.sub_category}/${article._id}`}>
-				<div
-					className="flex flex-row gap-16 hover:bg-black-10 transition-all ease-in-out cursor-pointer"
-					key={index}>
+				href={`/${article.category}/${article.sub_category}/${article._id}`}
+				key={index}>
+				<div className="flex flex-row gap-16 hover:bg-black-10 transition-all ease-in-out cursor-pointer">
 					<div className="relative w-1/4 h-[170px]">
 						<Image
 							src={article.images[0].image_url}
