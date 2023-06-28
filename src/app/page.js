@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 export const metadata = { title: "HH - Home" };
 import { Suspense } from "react";
-import { LoadingAnimation } from "./loadingAnimation";
+import LoadingAnimation from "./loadingAnimation";
 const getData = async () => {
 	try {
 		const res = await fetch(`${process.env.API_URL}/articles`, {
