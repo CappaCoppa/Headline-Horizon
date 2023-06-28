@@ -6,7 +6,7 @@ export const Header = () => {
 				<h3 className=" font-antic p-0 m-0 uppercase text-black-25">
 					Headline Horizone
 				</h3>
-				<div className="flex gap-16 font-normal text-black-10 uppercase">
+				<div className="flex gap-16 font-normal text-black-10 uppercase font-antic">
 					<h7 className="cursor-pointer">Business</h7>
 					<h7 className="cursor-pointer">Entertainment</h7>
 					<h7 className="cursor-pointer">Health</h7>
