@@ -4,7 +4,8 @@ import Image from "next/image";
 const getData = async (sub_category, id) => {
 	try {
 		const res = await fetch(
-			`${process.env.API_URL}/articles/${sub_category}/${id}`
+			`${process.env.API_URL}/articles/${sub_category}/${id}`,
+			{ cache: "no-cache" }
 		);
 		return await res.json();
 	} catch (err) {
