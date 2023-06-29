@@ -4,7 +4,7 @@ import Link from "next/link";
 const getData = async (sub_category) => {
 	try {
 		const res = await fetch(`${process.env.API_URL}/articles/${sub_category}`, {
-			cache: "no-store",
+			cache: "force-cache",
 		});
 		return await res.json();
 	} catch (err) {
