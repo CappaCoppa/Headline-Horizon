@@ -58,7 +58,8 @@ const mappedTopArticles = (array) =>
 					className="hover:bg-black-opacity-0.30 cursor-pointer transition ease-in-out p-8"
 					key={index}>
 					<Link
-						href={`${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`}>
+						href={`${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`}
+						passHref={true}>
 						<div className="relative">
 							<Image
 								width="600"
