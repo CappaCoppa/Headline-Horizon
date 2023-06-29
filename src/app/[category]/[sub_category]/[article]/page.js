@@ -61,19 +61,19 @@ export default async function Article({ params }) {
 		<main className="bg-black-5 px-64 py-32">
 			<div className="items-center align-middle flex justify-center gap-8 pb-8">
 				<h7 className="font-bold text-primary uppercase">
-					{articleObject.sub_category}
+					{/* {articleObject.sub_category} */}
 				</h7>
 				<div className="rounded-full bg-black-25 w-[4px] h-[4px]"></div>
 				<h7>
 					<span className="font-bold uppercase">published: </span>{" "}
-					{articleObject.date}
+					{/* {articleObject.date} */}
 				</h7>
 			</div>
 			<h1 className="px-128 text-black font-antic uppercase text-center font-bold pb-16">
-				{articleObject.headline}
+				{/* {articleObject.headline} */}
 			</h1>
 			<h5 className="px-256 pb-16 text-black text-center">
-				{articleObject.sub_headline}
+				{/* {articleObject.sub_headline} */}
 			</h5>
 			<div className="flex border-y-black-10 border-y-2 py-16 gap-16">
 				{/* <div className="w-3/4">{mappingContent()}</div> */}
