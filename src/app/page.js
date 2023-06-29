@@ -85,24 +85,24 @@ const mappingNormalArticles = (array) =>
 			<div
 				className=" flex flex-col justify-between cursor-pointer transition ease-in-out hover:bg-black-10 p-8 "
 				key={index}>
-				<Image
-					width={600}
-					height={500}
-					src={articleObject.images[0].image_url}
-					alt={articleObject.images[0].alt}
-				/>
 				<Link
 					href={`${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`}>
+					<Image
+						width={600}
+						height={500}
+						src={articleObject.images[0].image_url}
+						alt={articleObject.images[0].alt}
+					/>
 					<h6 className=" cursor-pointer transition-all hover:underline font-semibold tracking-wider font-antic text-primary py-8 uppercase">
 						{articleObject.headline}
 					</h6>
+					<div className=" flex justify-between border-t border-primary py-8 ">
+						<h7 className=" uppercase text-primary">{articleObject.date}</h7>
+						<h7 className=" cursor-pointer font-bold transition-all hover:underline uppercase text-secondary">
+							{articleObject.sub_category}
+						</h7>
+					</div>
 				</Link>
-				<div className=" flex justify-between border-t border-primary py-8 ">
-					<h7 className=" uppercase text-primary">{articleObject.date}</h7>
-					<h7 className=" cursor-pointer font-bold transition-all hover:underline uppercase text-secondary">
-						{articleObject.sub_category}
-					</h7>
-				</div>
 			</div>
 		);
 	});
