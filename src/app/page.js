@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+
 export const metadata = { title: "HH - Home" };
 const getData = async () => {
 	try {
 		const res = await fetch(`${process.env.API_URL}/articles`, {
-			cache: "force-cache",
+			cache: "no-store",
 		});
 		return await res.json();
 	} catch (err) {

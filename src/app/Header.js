@@ -1,7 +1,7 @@
 import React from "react";
 export const Header = () => {
 	return (
-		<>
+		<div>
 			<div className="bg-black-opacity-0.50 px-64 py-0 flex justify-between items-center">
 				<h3 className=" font-antic p-0 m-0 uppercase text-black-25">
 					Headline Horizone
@@ -28,6 +28,6 @@ export const Header = () => {
 				<h7 className="cursor-pointer">Bussiness</h7>
 				<h7 className="cursor-pointer">Ukraine</h7>
 			</div>
-		</>
+		</div>
 	);
 };
