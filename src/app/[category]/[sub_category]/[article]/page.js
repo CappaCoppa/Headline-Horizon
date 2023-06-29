@@ -76,7 +76,7 @@ export default async function Article({ params }) {
 				{articleObject.sub_headline}
 			</h5>
 			<div className="flex border-y-black-10 border-y-2 py-16 gap-16">
-				<div className="w-3/4">{mappingContent()}</div>
+				{/* <div className="w-3/4">{mappingContent()}</div> */}
 				<div className="border-l-2 border-black-10 pl-8 w-1/4">
 					<div className="bg-secondary h-[550px] w-[100%] text-center flex justify-center items-center">
 						<h6>Add container</h6>
