@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata = { title: "HH - Home" };
 const getData = async () => {
 	try {
-		const res = await fetch(`${process.env.API_URL}/articles`, {
+		const res = await fetch(`${process.env.API_URL}/api/articles`, {
 			cache: "force-cache",
 		});
 		return await res.json();
@@ -23,7 +23,7 @@ const mappedTopArticles = (array) =>
 					className="row-span-2 col-span-2 cursor-pointer hover:bg-black-opacity-0.30 transition ease-in-out p-8 "
 					key={index}>
 					<Link
-						href={`${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`}>
+						href={`${process.env.API_URL}/${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`}>
 						<div className="relative">
 							<Image
 								width="2000"
@@ -58,8 +58,7 @@ const mappedTopArticles = (array) =>
 					className="hover:bg-black-opacity-0.30 cursor-pointer transition ease-in-out p-8"
 					key={index}>
 					<Link
-						href={`${process.env.API_URL}/${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`}
-						passHref={true}>
+						href={`${process.env.API_URL}/${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`}>
 						<div className="relative">
 							<Image
 								width="600"
@@ -87,7 +86,7 @@ const mappingNormalArticles = (array) =>
 				className=" flex flex-col justify-between cursor-pointer transition ease-in-out hover:bg-black-10 p-8 "
 				key={index}>
 				<Link
-					href={`${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`}>
+					href={`${process.env.API_URL}/${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`}>
 					<Image
 						width={600}
 						height={500}
