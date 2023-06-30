@@ -19,7 +19,7 @@ const mappingSubCategoryArticles = (array) => {
 	return array.map((article, index) => {
 		return (
 			<Link
-				href={`${process.env.API_URL}/${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`}
+				href={`/${article.category}/${article.sub_category}/${article._id}`}
 				key={index}>
 				<div className="flex flex-row gap-16 hover:bg-black-10 transition-all ease-in-out cursor-pointer">
 					<div className="relative w-1/4 h-[170px]">
