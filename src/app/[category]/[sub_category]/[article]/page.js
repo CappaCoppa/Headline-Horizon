@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 
+export const dynamic = "force-dynamic";
+
 const getData = async (sub_category, id) => {
 	try {
 		const res = await fetch(
