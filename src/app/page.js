@@ -32,6 +32,7 @@ const mappedTopArticles = (array) =>
 								height="1000"
 								src={articleObject.images[0].image_url}
 								alt={articleObject.images[0].image_alt}
+								priority={true}
 							/>
 							<h4 className=" bg-secondary-opacity-0.20 absolute bottom-0 m-16 font-semibold tracking-wider px-16 py-8 font-antic uppercase text-black-10">
 								{articleObject.sub_category}
