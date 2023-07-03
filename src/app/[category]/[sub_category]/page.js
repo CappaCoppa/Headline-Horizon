@@ -8,7 +8,7 @@ const getData = async (sub_category) => {
 		const res = await fetch(
 			`${process.env.API_URL}/api/articles/${sub_category}`,
 			{
-				cache: "no-cache",
+				cashe: "force-cache",
 			}
 		);
 		return await res.json();
