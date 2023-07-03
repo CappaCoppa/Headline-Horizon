@@ -6,7 +6,9 @@ export const dynamic = "force-dynamic";
 export const metadata = { title: "HH - Home" };
 const getData = async () => {
 	try {
-		const res = await fetch(`${process.env.API_URL}/api/articles`);
+		const res = await fetch(`${process.env.API_URL}/api/articles`, {
+			cashe: "force-cache",
+		});
 		return await res.json();
 	} catch (err) {
 		console.log(err);
