@@ -6,7 +6,7 @@ export async function GET(req) {
 		const db = await client.db("headline_horrizon");
 		const collection = await db.collection("articles");
 		const all_articles = await collection.find().toArray();
-		const response = JSON.stringify(all_articles);
+		const response = JSON.stringify(all_articles.slice(0, 10));
 		return new Response(response, {
 			status: 200,
 			headers: {
