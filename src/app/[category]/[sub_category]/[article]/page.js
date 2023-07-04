@@ -59,7 +59,7 @@ export default async function Article({ params }) {
 							)}
 						</div>
 					)}
-					<h6 className="text-black text-left py-16">{sentence}</h6>
+					<p className="text-black text-left py-16 text-h6">{sentence}</p>
 				</React.Fragment>
 			);
 		});
