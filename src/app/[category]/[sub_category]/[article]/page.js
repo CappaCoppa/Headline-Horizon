@@ -35,10 +35,13 @@ export default async function Article({ params }) {
 						<div className="display flex flex-col">
 							<div className="h-[700px] relative">
 								<Image
-									className="align-middle h-auto"
 									fill
 									src={articleObject.images[imageIndex].image_url}
 									alt={articleObject.images[imageIndex].image_alt}
+									className="align-middle h-auto transition-opacity opacity-0 duration-[2s]"
+									onLoadingComplete={(image) =>
+										image.classList.remove("opacity-0")
+									}
 								/>
 							</div>
 							{index === 0 && (
