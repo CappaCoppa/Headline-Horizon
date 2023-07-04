@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import Image from "next/image";
 import Loading from "./loading";
+import lqip from "lqip-modern";
 
 export const dynamic = "force-dynamic";
 
@@ -23,11 +24,14 @@ export default async function Article({ params }) {
 	const sentencesPerImage = Math.ceil(numSentences / numImages);
 
 	const mappingContent = () =>
-		articleObject.article.map((sentence, index) => {
+		articleObject.article.map(async (sentence, index) => {
 			const shouldDisplayImage = index % sentencesPerImage === 0 || index === 0;
 			const imageIndex = Math.min(
 				Math.floor(index / sentencesPerImage),
 				numImages - 1
+			);
+			const bluredImage = await lqip(
+				"https://cdn.discordapp.com/attachments/1122530950853701692/1122534892077600798/KappaKoppa_Charlie_Shabazz_in_front_of_one_of_her_Nothing_Bundt_4baa7fc7-72da-4c18-a8b9-f0b2070287d0.png"
 			);
 
 			return (
@@ -44,6 +48,7 @@ export default async function Article({ params }) {
 										priority={index === 0 ? true : false}
 										loading={index === 0 ? "eager" : "lazy"}
 										quality={50}
+										blurDataURL={bluredImage.metadata.dataURIBase64}
 									/>
 								</Suspense>
 							</div>
