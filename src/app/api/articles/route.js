@@ -1,6 +1,6 @@
 import db_connection from "@/utils/db/connection";
 
-export async function GET(req) {
+export async function GET() {
 	try {
 		const client = await db_connection();
 		const db = await client.db("headline_horrizon");
