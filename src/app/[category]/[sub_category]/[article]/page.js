@@ -1,5 +1,6 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Image from "next/image";
+import Loading from "./loading";
 
 export const dynamic = "force-dynamic";
 
@@ -34,15 +35,17 @@ export default async function Article({ params }) {
 					{shouldDisplayImage && (
 						<div className="display flex flex-col">
 							<div className="h-[700px] relative">
-								<Image
-									fill
-									src={articleObject.images[imageIndex].image_url}
-									alt={articleObject.images[imageIndex].image_alt}
-									className="align-middle h-auto transition-opacity opacity-0 duration-[2s]"
-									onLoadingComplete={(image) =>
-										image.classList.remove("opacity-0")
-									}
-								/>
+								<Suspense fallback={<Loading />}>
+									<Image
+										fill
+										src={articleObject.images[imageIndex].image_url}
+										alt={articleObject.images[imageIndex].image_alt}
+										className="align-middle h-auto transition-opacity opacity-1 duration-[2s]"
+										priority={index === 0 ? true : false}
+										loading={index === 0 ? "eager" : "lazy"}
+										quality={50}
+									/>
+								</Suspense>
 							</div>
 							{index === 0 && (
 								<audio
@@ -77,11 +80,13 @@ export default async function Article({ params }) {
 			<h1 className="px-128 text-black font-antic uppercase text-center font-bold pb-16">
 				{articleObject.headline}
 			</h1>
-			<h5 className="px-256 pb-16 text-black text-center">
+			<h2 className="text-h5 px-256 pb-16 text-black text-center">
 				{articleObject.sub_headline}
-			</h5>
+			</h2>
 			<div className="flex border-y-black-10 border-y-2 py-16 gap-16">
-				<div className="w-3/4">{mappingContent()}</div>
+				<Suspense fallback={<p>Loading...</p>}>
+					<div className="w-3/4">{mappingContent()}</div>
+				</Suspense>
 				<div className="border-l-2 border-black-10 pl-8 w-1/4">
 					<div className="bg-secondary h-[550px] w-[100%] text-center flex justify-center items-center">
 						<h6>Add container</h6>

@@ -94,7 +94,7 @@ const mappingNormalArticles = (array) =>
 						width={600}
 						height={500}
 						src={articleObject.images[0].image_url}
-						alt={articleObject.images[0].alt}
+						alt={articleObject.images[0].image_alt}
 					/>
 					<h6 className=" cursor-pointer transition-all hover:underline font-semibold tracking-wider font-antic text-primary py-8 uppercase">
 						{articleObject.headline}
