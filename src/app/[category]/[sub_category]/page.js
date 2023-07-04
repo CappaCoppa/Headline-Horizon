@@ -51,7 +51,7 @@ const mappingSubCategoryArticles = (array) => {
 };
 
 export default async function SubCategory({ params }) {
-	const subCategory = params.sub_category;
+	const subCategory = await params.sub_category;
 	const artiles = await getData(subCategory);
 
 	return (
