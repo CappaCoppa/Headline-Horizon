@@ -1,10 +1,7 @@
 exports.getSubCategoryArticles = async (sub_category) => {
 	try {
 		const res = await fetch(
-			`${process.env.API_URL}/api/articles/${sub_category}`,
-			{
-				next: { revalidate: 240 },
-			}
+			`${process.env.API_URL}/api/articles/${sub_category}`
 		);
 		return await res.json();
 	} catch (err) {
