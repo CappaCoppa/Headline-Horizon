@@ -1,23 +1,12 @@
 import React, { Suspense } from "react";
 import Image from "next/image";
 import Loading from "./loading";
+import { getArticle } from "@/utils/lib/articles/article";
 
 export const dynamic = "force-dynamic";
 
-const getData = async (sub_category, id) => {
-	try {
-		const res = await fetch(
-			`${process.env.API_URL}/api/articles/${sub_category}/${id}`,
-			{ cache: "force-cache" }
-		);
-		return await res.json();
-	} catch (err) {
-		console.log(`An error occured while fetching data from the server: ${err}`);
-	}
-};
-
 export default async function Article({ params }) {
-	const articleObject = await getData(params.sub_category, params.article);
+	const articleObject = await getArticle(params.sub_category, params.article);
 	const numSentences = articleObject.article.length;
 	const numImages = articleObject.images.length;
 	const sentencesPerImage = Math.ceil(numSentences / numImages);

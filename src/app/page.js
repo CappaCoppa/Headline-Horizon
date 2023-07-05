@@ -1,19 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import { getArticles } from "@/utils/lib/articles/articles";
 
 export const dynamic = "force-dynamic";
 
 export const metadata = { title: "HH - Home" };
-const getData = async () => {
-	try {
-		const res = await fetch(`${process.env.API_URL}/api/articles`, {
-			next: { revalidate: 240 },
-		});
-		return await res.json();
-	} catch (err) {
-		console.log(err);
-	}
-};
 
 const mappedTopArticles = (array) =>
 	array.map((articleObject, index) => {
@@ -112,7 +103,7 @@ const mappingNormalArticles = (array) =>
 
 export default async function Home() {
 	try {
-		const objectsArray = await getData();
+		const objectsArray = await getArticles();
 		return (
 			<main>
 				<div className="py-16 bg-black-5 shadow-2xl"></div>

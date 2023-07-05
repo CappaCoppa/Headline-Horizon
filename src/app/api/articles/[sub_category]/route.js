@@ -2,7 +2,6 @@ import db_connection from "@/utils/db/connection";
 
 export async function GET(req, { params }) {
 	try {
-		console.log("First Console =>>>>>>>>>>>>>>>>>>>>.");
 		const subCategory = await params.sub_category;
 		const client = await db_connection();
 		const db = await client.db("headline_horrizon");
@@ -11,7 +10,6 @@ export async function GET(req, { params }) {
 			.find({ sub_category: subCategory })
 			.toArray();
 		const response = JSON.stringify(articles);
-		console.log("Second console =>>>>>>>>>>>>>>> " + response);
 		return new Response(response, {
 			status: 200,
 			headers: {
