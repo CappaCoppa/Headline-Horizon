@@ -10,7 +10,7 @@ export async function GET() {
 		description:
 			"Headline Horizon is a news aggregator that provides you with the latest news from the world's leading newspapers.",
 		site_url: `${process.env.API_URL}`,
-		feed_url: `${process.env.API_URL}/feed.xml`,
+		feed_url: `${process.env.API_URL}/api/feed.xml`,
 		copyright: `${new Date().getFullYear()} Headline Horizon`,
 		language: "en",
 		pubDate: new Date(),
