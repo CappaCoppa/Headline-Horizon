@@ -29,6 +29,7 @@ export async function GET() {
 			date: article.date,
 			description: article.sub_headline,
 			categories: [article.category, article.sub_category],
+			language: "en",
 		});
 	});
 
