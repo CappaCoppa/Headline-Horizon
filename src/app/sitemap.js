@@ -33,7 +33,6 @@ export default async function sitemap() {
 			};
 		});
 	});
-	console.log(allSubCategories);
 
 	return [
 		{
