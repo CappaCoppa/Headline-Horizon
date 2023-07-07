@@ -14,6 +14,7 @@ export async function generateMetadata({ params }) {
 		date: `${articleObject.date}`,
 		keywords: articleObject.keywords.slice(0, 10),
 		url: `${process.env.API_URL}/${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`,
+		metadataBase: `${process.env.API_URL}`,
 		openGraph: {
 			title: articleObject.headline,
 			description: concatedDes,
