@@ -5,6 +5,28 @@ import { getArticle } from "@/utils/lib/articles/article";
 
 export const dynamic = "force-dynamic";
 
+export async function generateMetadata({ params }) {
+	const articleObject = await getArticle(params.sub_category, params.article);
+	const concatedDes = articleObject.article.join(" ").slice(0, 150);
+	return {
+		title: articleObject.headline,
+		description: concatedDes,
+		date: `${articleObject.date}`,
+		keywords: articleObject.keywords.slice(0, 10),
+		url: `${process.env.API_URL}/${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`,
+		openGraph: {
+			title: articleObject.headline,
+			description: concatedDes,
+
+			type: "article",
+			images: articleObject.images.map((image) => `${image.image_url}`),
+			url: `${process.env.API_URL}/${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`,
+			local: "en_US",
+			site_name: `${process.env.API_URL}`,
+		},
+	};
+}
+
 export default async function Article({ params }) {
 	const articleObject = await getArticle(params.sub_category, params.article);
 	const numSentences = articleObject.article.length;
