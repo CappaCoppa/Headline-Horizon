@@ -1,5 +1,5 @@
-import { getArticles } from "@/utils/lib/articles/articles";
-import { getCategories } from "@/utils/lib/categories/categories";
+import { getArticles } from "@/utils/lib/sitemap/articles/articles";
+import { getCategories } from "@/utils/lib/sitemap/categories/categories";
 
 export default async function sitemap() {
 	const articles = await getArticles();
