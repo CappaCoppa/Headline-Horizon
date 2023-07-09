@@ -1,9 +1,10 @@
 import db_connection from "@/utils/db/connection";
+import { Client } from "@/app/layout";
 
 export async function GET(req, { params }) {
 	try {
 		const subCategory = await params.sub_category;
-		const client = await db_connection();
+		const client = await Client();
 		const db = await client.db("headline_horrizon");
 		const collection = await db.collection("articles");
 		const articles = await collection

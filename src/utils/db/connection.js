@@ -1,4 +1,4 @@
-import { MongoClient } from "mongodb";
+import { MongoClient, GridFSBucket } from "mongodb";
 
 const db_connection = async () => {
 	try {

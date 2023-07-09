@@ -1,8 +1,9 @@
 import db_connection from "@/utils/db/connection";
+import { Client } from "@/app/layout";
 
 export async function GET() {
 	try {
-		const client = await db_connection();
+		const client = await Client();
 		const db = await client.db("headline_horrizon");
 		const collection = await db.collection("articles");
 		const all_articles = await collection.find().toArray();
