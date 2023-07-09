@@ -1,7 +1,7 @@
 exports.getArticles = async () => {
 	try {
 		const res = await fetch(`${process.env.API_URL}/api/articles`, {
-			cache: "no-store",
+			cache: "no-cache",
 		});
 		return await res.json();
 	} catch (err) {
