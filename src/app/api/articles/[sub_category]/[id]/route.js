@@ -1,9 +1,9 @@
-import { Client } from "@/app/layout";
+import db_connection from "@/utils/db/connection";
 import { ObjectId } from "mongodb";
 
 export async function GET(req, { params }) {
 	try {
-		const client = await Client();
+		const client = await db_connection();
 		const db = await client.db("headline_horrizon");
 		const collection = await db.collection("articles");
 		const article = await collection.findOne({
