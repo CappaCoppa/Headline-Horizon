@@ -6,8 +6,6 @@ import Image from "next/image";
 export default async function Category({ params }) {
 	const title = params.category;
 	const category = await getCategory(title);
-	console.log(title);
-	console.log(category);
 	const mappedContent = await category.sub_category.map(
 		async (sub_category, index) => {
 			const subcategoryArticles = await getSubCategoryArticles(

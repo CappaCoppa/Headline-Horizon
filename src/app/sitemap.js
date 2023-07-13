@@ -15,7 +15,6 @@ export default async function sitemap() {
 			};
 		} catch (e) {
 			console.log(e);
-			console.log(article);
 		}
 	});
 
