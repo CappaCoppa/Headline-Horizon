@@ -38,14 +38,16 @@ const mappingSubCategoryArticles = (array) => {
 };
 
 export default async function SubCategory({ params }) {
+	console.log(params);
+	const category = await params.category;
 	const subCategory = await params.sub_category;
-	const artiles = await getSubCategoryArticles(subCategory);
+	const artiles = await getSubCategoryArticles(category, subCategory);
 
 	return (
 		<main>
 			<div className="bg-black-5 p-64">
 				<h1 className="font-antic tracking-wider font-medium capitalize border-b-2 border-y-black-10">
-					{subCategory}
+					{decodeURI(subCategory)}
 				</h1>
 				<div className="flex flex-row gap-16 py-24">
 					<div className="flex flex-col gap-8 py-24">

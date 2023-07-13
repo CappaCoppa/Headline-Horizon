@@ -1,18 +1,18 @@
 import { MongoClient } from "mongodb";
 
-let cachedClient = null;
-
 const db_connection = async () => {
+	let cachedClient = null;
 	try {
 		if (cachedClient) return cachedClient;
+		else {
+			const client = await MongoClient.connect(process.env.MONGO_URI);
 
-		const client = await MongoClient.connect(process.env.MONGO_URI);
+			console.log("Connected to MongoDB");
 
-		console.log("Connected to MongoDB");
+			cachedClient = client;
 
-		cachedClient = client;
-
-		return client;
+			return client;
+		}
 	} catch (err) {
 		console.log(err);
 		return err;

@@ -1,33 +1,47 @@
+import Link from "next/link";
 import React from "react";
+import { ClientComp } from "@/components/ClientComp";
+
 export const Header = () => {
+	const categories = [
+		"U.S.",
+		"World",
+		"Politics",
+		"Entertainment",
+		"Business",
+		"Lifestyle",
+		"Science",
+		"Tech",
+		"Health",
+	];
+
+	const mappedCategories = categories.map((title, index) => (
+		<Link key={index} href={`${title}`}>
+			<p className="text-h6 tracking-wider text-black-5 font-antic uppercase cursor-pointer transition-all duration-300 hover:text-black-25">
+				{title}
+			</p>
+		</Link>
+	));
+
 	return (
 		<div>
-			<div className="bg-black-opacity-0.50 px-64 py-0 flex justify-between items-center">
-				<h3 className=" font-antic p-0 m-0 uppercase text-black-25">
-					Headline Horizone
-				</h3>
-				<div className="flex gap-16 font-normal text-black-10 uppercase font-antic">
-					<h7 className="cursor-pointer">Business</h7>
-					<h7 className="cursor-pointer">Entertainment</h7>
-					<h7 className="cursor-pointer">Health</h7>
-					<h7 className="cursor-pointer">Lifestyle</h7>
-					<h7 className="cursor-pointer">Politics</h7>
-					<h7 className="cursor-pointer">Science</h7>
-					<h7 className="cursor-pointer">Tech</h7>
-					<h7 className="cursor-pointer">U.S</h7>
-					<h7 className="cursor-pointer">World</h7>
+			<div className="bg-primary px-16 md:px-32 xl:px-64 py-0 flex justify-between items-center">
+				<Link href={process.env.API_URL}>
+					<h1 className=" text-h2 cursor-pointer font-antic p-0 m-0 uppercase text-black-5 xl:hidden">
+						H H
+					</h1>
+					<h1 className=" text-h2 cursor-pointer font-antic p-0 m-0 uppercase text-black-5 hidden xl:block">
+						Headline Horizon
+					</h1>
+				</Link>
+				<div>
+					<ClientComp categories={categories} />
+					<span className="hidden xl:flex flex-row gap-8">
+						{mappedCategories}
+					</span>
 				</div>
 			</div>
-			<div className="bg-primary-opacity-0.30 backdrop-blur-lg px-64 py-8 flex gap-16 uppercase text-black-10 font-medium justify-between">
-				<h7 className="text-error font-semibold cursor-pointer">spotlight</h7>
-				<h7 className="cursor-pointer">Latest</h7>
-				<h7 className="cursor-pointer">Politics</h7>
-				<h7 className="cursor-pointer">Health</h7>
-				<h7 className="cursor-pointer">Science</h7>
-				<h7 className="cursor-pointer">Tech</h7>
-				<h7 className="cursor-pointer">Bussiness</h7>
-				<h7 className="cursor-pointer">Ukraine</h7>
-			</div>
+			<div className="h-[5px] bg-secondary"></div>
 		</div>
 	);
 };

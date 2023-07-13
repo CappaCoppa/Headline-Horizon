@@ -1,30 +1,10 @@
-const fetchCategories = async () => {
-	try {
-		const res = await fetch(`${process.env.API_URL}/api/categories`, {
-			cache: "force-cache",
-		});
-		return await res.json();
-	} catch (err) {
-		console.log(err);
-	}
-};
-
-const fetchArticles = async () => {
-	try {
-		const res = await fetch(`${process.env.API_URL}/api/articles`, {
-			cache: "force-cache",
-		});
-		return await res.json();
-	} catch (err) {
-		console.log(err);
-	}
-};
+import { getArticle } from "@/utils/lib/articles/article";
+import { getCategories } from "@/utils/lib/categories/categories";
 
 export default async function sitemap() {
-	const categories = await fetchCategories();
-	const articles = await fetchArticles();
+	const categories = await getCategories();
+	const articles = await getArticle();
 	const allArticles = articles.map((article) => {
-		console.log(article + " <++++++++++++++++++");
 		try {
 			const trimed = article.sub_category.trim();
 			return {

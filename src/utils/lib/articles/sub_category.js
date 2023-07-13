@@ -1,7 +1,7 @@
-exports.getSubCategoryArticles = async (sub_category) => {
+exports.getSubCategoryArticles = async (category, sub_category) => {
 	try {
 		const res = await fetch(
-			`${process.env.API_URL}/api/articles/${sub_category}`,
+			`${process.env.API_URL}/api/articles/${category}/${sub_category}`,
 			{ cache: "force-cache" }
 		);
 		return await res.json();
