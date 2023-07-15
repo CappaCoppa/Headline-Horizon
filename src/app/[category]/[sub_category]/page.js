@@ -10,16 +10,16 @@ const mappingSubCategoryArticles = (array) => {
 			<Link
 				href={`/${article.category}/${article.sub_category}/${article._id}`}
 				key={index}>
-				<div className="flex flex-row gap-16 hover:bg-black-10 transition-all ease-in-out cursor-pointer">
-					<div className="relative w-1/4 h-[170px]">
+				<div className="flex flex-col sm:flex-row gap-16 hover:bg-black-10 transition-all ease-in-out cursor-pointer">
+					<div className="relative">
 						<Image
 							src={article.images[0].image_url}
 							alt={article.images[0].image_alt}
-							width={300}
-							height={300}
+							width={650}
+							height={400}
 						/>
 					</div>
-					<div className="relative w-3/4 p-8">
+					<div className="relative w-[100%] sm:w-3/4 p-8">
 						<div className="flex flex-row gap-8 items-center">
 							<p className="text-h8 uppercase text-secondary font-semibold tracking-wider ">
 								{article.keywords[0]}
@@ -29,7 +29,9 @@ const mappingSubCategoryArticles = (array) => {
 						<h3 className="font-antic text-h5 text-primary font-semibold tracking-wider transition-all ease-in-out hover:underline">
 							{article.headline}
 						</h3>
-						<p className="text-black-50">{article.article[0]}</p>
+						<p className="text-black-50 hidden lg:block">
+							{`${article.article[0]} ${article.article[1]}..`}
+						</p>
 					</div>
 				</div>
 			</Link>
@@ -44,15 +46,15 @@ export default async function SubCategory({ params }) {
 
 	return (
 		<main>
-			<div className="bg-black-5 p-64">
-				<h1 className="font-antic tracking-wider font-medium capitalize border-b-2 border-y-black-10">
+			<div className="bg-black-5 px-16 py-32 md:p-64">
+				<h1 className="text-h4 md:text-h1 font-antic tracking-wider font-medium capitalize border-b-2 border-y-black-10">
 					{decodeURI(subCategory)}
 				</h1>
-				<div className="flex flex-row gap-16 py-24">
-					<div className="flex flex-col gap-8 py-24">
+				<div className="flex flex-row gap-16 py-16 md:py-32">
+					<div className="flex flex-col gap-16">
 						{mappingSubCategoryArticles(artiles)}
 					</div>
-					<div className="w-1/4"></div>
+					{/* <div className="w-1/4"></div> */}
 				</div>
 			</div>
 		</main>

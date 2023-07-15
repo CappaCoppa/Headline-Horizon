@@ -1,9 +1,10 @@
-import { getArticle } from "@/utils/lib/articles/article";
+import { getArticles } from "@/utils/lib/articles/articles";
 import { getCategories } from "@/utils/lib/categories/categories";
 
 export default async function sitemap() {
 	const categories = await getCategories();
-	const articles = await getArticle();
+	const articles = await getArticles();
+
 	const allArticles = articles.map((article) => {
 		try {
 			const trimed = article.sub_category.trim();
