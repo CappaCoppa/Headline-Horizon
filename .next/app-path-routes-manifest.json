@@ -1,0 +1,15 @@
+{
+  "/favicon.ico/route": "/favicon.ico",
+  "/page": "/",
+  "/robots.txt/route": "/robots.txt",
+  "/sitemap.xml/route": "/sitemap.xml",
+  "/[category]/page": "/[category]",
+  "/[category]/[sub_category]/page": "/[category]/[sub_category]",
+  "/api/articles/route": "/api/articles",
+  "/api/categories/route": "/api/categories",
+  "/[category]/[sub_category]/[article]/page": "/[category]/[sub_category]/[article]",
+  "/api/articles/[category]/route": "/api/articles/[category]",
+  "/api/categories/[category]/route": "/api/categories/[category]",
+  "/api/articles/[category]/[sub_category]/route": "/api/articles/[category]/[sub_category]",
+  "/api/articles/[category]/[sub_category]/[id]/route": "/api/articles/[category]/[sub_category]/[id]"
+}

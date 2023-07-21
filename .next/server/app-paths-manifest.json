@@ -1,0 +1,15 @@
+{
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/page": "app/page.js",
+  "/robots.txt/route": "app/robots.txt/route.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js",
+  "/[category]/page": "app/[category]/page.js",
+  "/[category]/[sub_category]/page": "app/[category]/[sub_category]/page.js",
+  "/api/articles/route": "app/api/articles/route.js",
+  "/api/categories/route": "app/api/categories/route.js",
+  "/[category]/[sub_category]/[article]/page": "app/[category]/[sub_category]/[article]/page.js",
+  "/api/articles/[category]/route": "app/api/articles/[category]/route.js",
+  "/api/categories/[category]/route": "app/api/categories/[category]/route.js",
+  "/api/articles/[category]/[sub_category]/route": "app/api/articles/[category]/[sub_category]/route.js",
+  "/api/articles/[category]/[sub_category]/[id]/route": "app/api/articles/[category]/[sub_category]/[id]/route.js"
+}
