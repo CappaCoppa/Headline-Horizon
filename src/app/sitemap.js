@@ -22,7 +22,7 @@ export default async function sitemap() {
     const allCategories = categories.map((category) => {
         try {
             return {
-                url: `${process.env.API_URL}/${category.category.title}`,
+                url: `${process.env.API_URL}/${category.category_title}`,
                 lastModified: new Date(),
             };
         } catch (e) {
@@ -34,8 +34,8 @@ export default async function sitemap() {
 
     const allSubCategories = categories.map((category) => {
         try {
-            return category.sub_category.map((sub_category) => {
-                const trimed = sub_category.title.trim();
+            return category.subcategory_title.map((title) => {
+                const trimed = title.trim();
                 return {
                     url: `${process.env.API_URL}/${
                         category.category.title

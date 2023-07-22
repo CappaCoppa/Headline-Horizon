@@ -6,31 +6,32 @@ export const Footer = async () => {
     const categories = await getCategories();
 
     const mappingCategories = categories.map((category, index) => {
-        const subCategories = category.sub_category.map(
+        const subCategories = category.subcategory_title.map(
             (subCategory, index1) => (
                 <Link
                     key={index1}
                     href={`${process.env.API_URL}/${encodeURIComponent(
-                        category.category.title
-                    )}/${encodeURIComponent(subCategory.title)}`}
+                        category.category_title
+                    )}/${encodeURIComponent(subCategory)}`}
                 >
                     <p className="cursor-pointer text-black-25 font-semibold my-1 py-1 transition-all duration-300 hover:opacity-50 shadow-black-5 text-left">
-                        {subCategory.title}
+                        {subCategory}
                     </p>
                 </Link>
             )
         );
 
         return (
-            <div key={index} className="justify-self-auto">
+            <div className="justify-self-auto">
                 <div>
                     <Link
+                        key={index}
                         href={`${process.env.API_URL}/${encodeURIComponent(
-                            category.category.title
+                            category.category_title
                         )}`}
                     >
                         <h4 className=" cursor-pointer font-antic  text-black-5 transition-all duration-300 hover:opacity-50 text-left">
-                            {category.category.title}
+                            {category.category_title}
                         </h4>
                     </Link>
                     <div className="border-b-[1px] mb-8 text-black-5 text"></div>
