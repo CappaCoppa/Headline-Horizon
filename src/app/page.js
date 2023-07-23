@@ -8,7 +8,6 @@ export const metadata = { title: "HH - Home" };
 
 const mappedTopArticles = (array) =>
     array.map((articleObject, index) => {
-        console.log(articleObject);
         const truncatedArticle = articleObject.article.slice(0, 200) + "...";
 
         if (index === 0) {

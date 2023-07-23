@@ -38,7 +38,7 @@ export default async function sitemap() {
                 const trimed = title.trim();
                 return {
                     url: `${process.env.API_URL}/${
-                        category.category.title
+                        category.category_title
                     }/${encodeURIComponent(trimed)}`,
                     lastModified: new Date(),
                 };

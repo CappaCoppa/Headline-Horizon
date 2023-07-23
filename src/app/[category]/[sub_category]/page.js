@@ -6,7 +6,6 @@ export const dynamic = "force-dynamic";
 
 const mappingSubCategoryArticles = (array) => {
     return array.map((article, index) => {
-        console.log(article);
         return (
             <Link
                 href={`/${article.category}/${article.sub_category}/${article._id}`}
