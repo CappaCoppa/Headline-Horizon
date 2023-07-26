@@ -1,4 +1,4 @@
-import { getCategories } from "@/utils/lib/categories/categories";
+import getCategories from "@/utils/lib/categories/categories";
 import React from "react";
 import Link from "next/link";
 

@@ -1,4 +1,4 @@
-exports.getArticle = async (category, sub_category, id) => {
+export default async function getArticle(category, sub_category, id) {
     try {
         const res = await fetch(
             `${process.env.API_URL}/api/articles/${category}/${sub_category}/${id}`,
@@ -11,4 +11,4 @@ exports.getArticle = async (category, sub_category, id) => {
         );
         //comment
     }
-};
+}

@@ -1,5 +1,5 @@
-import { getSubCategoryArticles } from "@/utils/lib/articles/sub_category";
-import { getCategory } from "@/utils/lib/categories/category";
+import getSubCategoryArticles from "@/utils/lib/articles/sub_category";
+import getCategory from "@/utils/lib/categories/category";
 import Link from "next/link";
 import Image from "next/image";
 

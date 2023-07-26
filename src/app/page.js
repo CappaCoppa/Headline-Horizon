@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getArticles } from "@/utils/lib/articles/articles";
+import getArticles from "@/utils/lib/articles/articles";
 
 export const dynamic = "force-dynamic";
 

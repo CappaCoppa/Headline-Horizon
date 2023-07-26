@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getSubCategoryArticles } from "@/utils/lib/articles/sub_category";
+import getSubCategoryArticles from "@/utils/lib/articles/sub_category";
 
 export const dynamic = "force-dynamic";
 
