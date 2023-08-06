@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import getSubCategoryArticles from "@/utils/lib/articles/sub_category";
-
-export const dynamic = "force-dynamic";
+import { ShowMoreButton } from "@/components/ShowMoreButton";
 
 const mappingSubCategoryArticles = (array) => {
     return array.map((article, index) => {
@@ -11,7 +10,10 @@ const mappingSubCategoryArticles = (array) => {
                 href={`/${article.category}/${article.sub_category}/${article._id}`}
                 key={index}
             >
-                <div className="flex flex-col sm:flex-row gap-16 hover:bg-black-10 transition-all ease-in-out cursor-pointer">
+                <div
+                    key={index}
+                    className="flex flex-col sm:flex-row gap-16 hover:bg-black-10 transition-all ease-in-out cursor-pointer"
+                >
                     <div className="relative">
                         <Image
                             src={article.image.image_url}
@@ -40,10 +42,17 @@ const mappingSubCategoryArticles = (array) => {
     });
 };
 
-export default async function SubCategory({ params }) {
-    const category = await params.category;
-    const subCategory = await params.sub_category;
-    const artiles = await getSubCategoryArticles(category, subCategory);
+export default async function SubCategory({ params, searchParams }) {
+    const show = searchParams["show"] ?? "5";
+    const category = params.category;
+    const subCategory = params.sub_category;
+    const { articles, articlesLength } = await getSubCategoryArticles(
+        category,
+        subCategory,
+        show
+    );
+
+    console.log(articlesLength);
 
     return (
         <main>
@@ -53,10 +62,10 @@ export default async function SubCategory({ params }) {
                 </h1>
                 <div className="flex flex-row gap-16 py-16 md:py-32">
                     <div className="flex flex-col gap-16">
-                        {mappingSubCategoryArticles(artiles)}
+                        {mappingSubCategoryArticles(articles)}
                     </div>
-                    {/* <div className="w-1/4"></div> */}
                 </div>
+                <ShowMoreButton articlesLength={articlesLength} />
             </div>
         </main>
     );

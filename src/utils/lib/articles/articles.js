@@ -1,7 +1,7 @@
 export default async function getArticles() {
     try {
         const res = await fetch(`${process.env.API_URL}/api/articles`, {
-            cache: "force-cache",
+            cache: "no-cache",
         });
         const data = await res.json();
 

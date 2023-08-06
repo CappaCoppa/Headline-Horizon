@@ -9,6 +9,5 @@ export default async function getArticle(category, sub_category, id) {
         console.log(
             `An error occured while fetching data from the server: ${err}`
         );
-        //comment
     }
 }

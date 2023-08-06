@@ -112,13 +112,14 @@ const mappingNormalArticles = (array) =>
 export default async function Home() {
     try {
         const objectsArray = await getArticles();
+        const reversedArray = objectsArray.reverse();
         return (
             <main>
                 <div className="p-16 xl:p-32 bg-black-opacity-0.80  grid grid-cols-1 grid-rows-1 md:grid-cols-3 md:grid-rows-2 gap-16 md:gap-24">
-                    {mappedTopArticles(objectsArray.slice(0, 6))}
+                    {mappedTopArticles(reversedArray.slice(0, 6))}
                 </div>
                 <div className="p-16 xl:p-32 bg-black-5 grid grid-cols-1 md:grid-cols-3 gap-16">
-                    {mappingNormalArticles(objectsArray.slice(6))}
+                    {mappingNormalArticles(reversedArray.slice(6))}
                 </div>
             </main>
         );

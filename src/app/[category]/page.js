@@ -6,15 +6,17 @@ import Image from "next/image";
 export default async function Category({ params }) {
     const title = params.category;
     const category = await getCategory(title);
-    const mappedContent = await category.sub_category.map(
+    const mappedContent = category.sub_category.map(
         async (sub_category, index) => {
-            const subcategoryArticles = await getSubCategoryArticles(
+            const { articles, articlesLength } = await getSubCategoryArticles(
                 title,
                 sub_category.title
             );
 
+            console.log(response);
+
             if (index % 3 === 0) {
-                const slicedArticles = subcategoryArticles.slice(0, 3);
+                const slicedArticles = articles.slice(0, 3);
                 const mappedArticles = slicedArticles.map((article, index) => {
                     return (
                         <div
@@ -63,40 +65,43 @@ export default async function Category({ params }) {
                 );
             } else if (index % 3 === 1) {
                 const slicedArticles = subcategoryArticles.slice(0, 5);
+                const reversedArticles = slicedArticles.reverse();
 
-                const mappedArticles = slicedArticles.map((article, index) => {
-                    return (
-                        <Link
-                            href={`/${article.category}/${article.sub_category}/${article._id}`}
-                            key={index}
-                        >
-                            <div className="flex flex-col sm:flex-row gap-16 hover:bg-black-10 transition-all ease-in-out cursor-pointer">
-                                <div className="relative">
-                                    <Image
-                                        src={article.image.image_url}
-                                        alt={article.image.image_alt}
-                                        width={650}
-                                        height={400}
-                                    />
-                                </div>
-                                <div className="relative w-[100%] sm:w-3/4 p-8">
-                                    <div className="flex flex-row gap-8 items-center">
-                                        <p className="text-h8 uppercase text-secondary font-semibold tracking-wider ">
-                                            {article.keyword}
-                                        </p>
-                                        <div className="rounded-full bg-black-25 w-[4px] h-[4px]" />
+                const mappedArticles = reversedArticles.map(
+                    (article, index) => {
+                        return (
+                            <Link
+                                href={`/${article.category}/${article.sub_category}/${article._id}`}
+                                key={index}
+                            >
+                                <div className="flex flex-col sm:flex-row gap-16 hover:bg-black-10 transition-all ease-in-out cursor-pointer">
+                                    <div className="relative">
+                                        <Image
+                                            src={article.image.image_url}
+                                            alt={article.image.image_alt}
+                                            width={650}
+                                            height={400}
+                                        />
                                     </div>
-                                    <h3 className="font-antic text-h5 text-primary font-semibold tracking-wider transition-all ease-in-out hover:underline">
-                                        {article.headline}
-                                    </h3>
-                                    <p className="text-black-50 hidden lg:block">
-                                        {`${article.article[0]} ${article.article[1]}..`}
-                                    </p>
+                                    <div className="relative w-[100%] sm:w-3/4 p-8">
+                                        <div className="flex flex-row gap-8 items-center">
+                                            <p className="text-h8 uppercase text-secondary font-semibold tracking-wider ">
+                                                {article.keyword}
+                                            </p>
+                                            <div className="rounded-full bg-black-25 w-[4px] h-[4px]" />
+                                        </div>
+                                        <h3 className="font-antic text-h5 text-primary font-semibold tracking-wider transition-all ease-in-out hover:underline">
+                                            {article.headline}
+                                        </h3>
+                                        <p className="text-black-50 hidden lg:block">
+                                            {`${article.article[0]} ${article.article[1]}..`}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                        </Link>
-                    );
-                });
+                            </Link>
+                        );
+                    }
+                );
 
                 return (
                     <div className="border-b-[1px] border-black-10 py-16">
@@ -115,38 +120,41 @@ export default async function Category({ params }) {
                 );
             } else {
                 const slicedArticles = subcategoryArticles.slice(0, 2);
+                const reversedArticles = slicedArticles.reverse();
 
-                const mappedArticles = slicedArticles.map((article, index) => {
-                    return (
-                        <Link
-                            href={`/${article.category}/${article.sub_category}/${article._id}`}
-                            key={index}
-                        >
-                            <div className="flex flex-col 2xl:flex-row gap-16 hover:bg-black-10 transition-all ease-in-out cursor-pointer">
-                                <div className="relative">
-                                    <Image
-                                        src={article.image.image_url}
-                                        alt={article.image.image_alt}
-                                        width={760}
-                                        height={760}
-                                    />
-                                </div>
-                                <div className="relative w-[100%] 2xl:w-3/4 p-8">
-                                    <div className="flex flex-row gap-8 items-center">
-                                        <p className="text-h8 uppercase text-secondary font-semibold tracking-wider ">
-                                            {article.keyword}
-                                        </p>
-                                        <div className="rounded-full bg-black-25 w-[4px] h-[4px]" />
+                const mappedArticles = reversedArticles.map(
+                    (article, index) => {
+                        return (
+                            <Link
+                                href={`/${article.category}/${article.sub_category}/${article._id}`}
+                                key={index}
+                            >
+                                <div className="flex flex-col 2xl:flex-row gap-16 hover:bg-black-10 transition-all ease-in-out cursor-pointer">
+                                    <div className="relative">
+                                        <Image
+                                            src={article.image.image_url}
+                                            alt={article.image.image_alt}
+                                            width={760}
+                                            height={760}
+                                        />
                                     </div>
-                                    <h3 className="font-antic text-h5 text-primary font-semibold tracking-wider transition-all ease-in-out hover:underline">
-                                        {article.headline}
-                                    </h3>
-                                    <p className="text-black-50">{`${article.article[0]}`}</p>
+                                    <div className="relative w-[100%] 2xl:w-3/4 p-8">
+                                        <div className="flex flex-row gap-8 items-center">
+                                            <p className="text-h8 uppercase text-secondary font-semibold tracking-wider ">
+                                                {article.keyword}
+                                            </p>
+                                            <div className="rounded-full bg-black-25 w-[4px] h-[4px]" />
+                                        </div>
+                                        <h3 className="font-antic text-h5 text-primary font-semibold tracking-wider transition-all ease-in-out hover:underline">
+                                            {article.headline}
+                                        </h3>
+                                        <p className="text-black-50">{`${article.article[0]}`}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </Link>
-                    );
-                });
+                            </Link>
+                        );
+                    }
+                );
 
                 return (
                     <div className="border-b-[1px] border-black-10 py-16">

@@ -2,7 +2,6 @@ import React, { Suspense } from "react";
 import Image from "next/image";
 import Loading from "./loading";
 import getArticle from "@/utils/lib/articles/article";
-import getSubCategoryArticles from "@/utils/lib/articles/sub_category";
 
 export const dynamic = "force-dynamic";
 
