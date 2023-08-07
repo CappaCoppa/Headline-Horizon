@@ -4,7 +4,7 @@ export async function GET(req, { params }) {
     try {
         const category = await params.category;
         const client = await db_connection();
-        const db = await client.db("headline_horrizon");
+        const db = await client.db("headline_horizon");
         const collection = await db.collection("articles");
         const articles = await collection
             .find({ category: category })

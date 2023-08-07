@@ -13,8 +13,6 @@ export default async function Category({ params }) {
                 sub_category.title
             );
 
-            console.log(response);
-
             if (index % 3 === 0) {
                 const slicedArticles = articles.slice(0, 3);
                 const mappedArticles = slicedArticles.map((article, index) => {
@@ -64,7 +62,7 @@ export default async function Category({ params }) {
                     </div>
                 );
             } else if (index % 3 === 1) {
-                const slicedArticles = subcategoryArticles.slice(0, 5);
+                const slicedArticles = articles.slice(0, 5);
                 const reversedArticles = slicedArticles.reverse();
 
                 const mappedArticles = reversedArticles.map(
@@ -119,7 +117,7 @@ export default async function Category({ params }) {
                     </div>
                 );
             } else {
-                const slicedArticles = subcategoryArticles.slice(0, 2);
+                const slicedArticles = articles.slice(0, 2);
                 const reversedArticles = slicedArticles.reverse();
 
                 const mappedArticles = reversedArticles.map(

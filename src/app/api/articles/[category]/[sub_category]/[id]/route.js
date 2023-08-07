@@ -4,10 +4,10 @@ import { ObjectId } from "mongodb";
 export async function GET(req, { params }) {
     try {
         const client = await db_connection();
-        const db = await client.db("headline_horrizon");
+        const db = await client.db("headline_horizon");
         const collection = await db.collection("articles");
         const article = await collection.findOne({
-            _id: new ObjectId(await params.id),
+            _id: Number(params.id),
         });
         const response = JSON.stringify(article);
         return new Response(response, {

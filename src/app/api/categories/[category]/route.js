@@ -3,7 +3,7 @@ import db_connection from "@/utils/db/connection";
 export async function GET(req, { params }) {
     try {
         const client = await db_connection();
-        const db = await client.db("headline_horrizon");
+        const db = await client.db("headline_horizon");
         const collection = await db.collection("sectionlinks");
         const result = await collection.findOne({
             "category.title": params.category,

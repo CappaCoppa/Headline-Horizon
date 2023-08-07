@@ -6,7 +6,7 @@ export async function GET(req, { params }) {
         const show = (await searchParams.get("show")) ?? "5";
         const subCategory = params.sub_category;
         const client = await db_connection();
-        const db = await client.db("headline_horrizon");
+        const db = await client.db("headline_horizon");
         const collection = await db.collection("articles");
         const totalDocs = await collection.countDocuments({
             sub_category: subCategory,
