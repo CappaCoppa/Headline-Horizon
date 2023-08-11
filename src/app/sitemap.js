@@ -3,7 +3,7 @@ import db_connection from "@/utils/db/connection";
 export default async function sitemap() {
     const client = await db_connection();
 
-    const db = await client.db("headline_horrizon");
+    const db = await client.db("headline_horizon");
     const collection1 = await db.collection("sectionlinks");
     const collection2 = await db.collection("articles");
 
