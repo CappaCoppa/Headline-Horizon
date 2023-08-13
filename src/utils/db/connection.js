@@ -1,5 +1,4 @@
 import { MongoClient } from "mongodb";
-console.log("This is the mongoDB connection file " + process.env.MONGO_URI);
 
 const db_connection = async () => {
     try {

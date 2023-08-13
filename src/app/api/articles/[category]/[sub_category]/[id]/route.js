@@ -1,5 +1,4 @@
 import db_connection from "@/utils/db/connection";
-import { ObjectId } from "mongodb";
 
 export async function GET(req, { params }) {
     try {

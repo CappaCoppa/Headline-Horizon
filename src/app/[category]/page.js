@@ -29,6 +29,8 @@ export default async function Category({ params }) {
                                     height={600}
                                     src={article.image.image_url}
                                     alt={article.image.image_alt}
+                                    placeholder="blur"
+                                    blurDataURL={article.image.mini_image_url}
                                 />
                                 <p className=" lg:text-h5 cursor-pointer transition-all hover:underline font-semibold tracking-wider font-antic text-primary py-8 uppercase">
                                     {article.headline}
@@ -79,6 +81,10 @@ export default async function Category({ params }) {
                                             alt={article.image.image_alt}
                                             width={650}
                                             height={400}
+                                            placeholder="blur"
+                                            blurDataURL={
+                                                article.image.mini_image_url
+                                            }
                                         />
                                     </div>
                                     <div className="relative w-[100%] sm:w-3/4 p-8">
@@ -134,6 +140,10 @@ export default async function Category({ params }) {
                                             alt={article.image.image_alt}
                                             width={760}
                                             height={760}
+                                            placeholder="blur"
+                                            blurDataURL={
+                                                article.image.mini_image_url
+                                            }
                                         />
                                     </div>
                                     <div className="relative w-[100%] 2xl:w-3/4 p-8">

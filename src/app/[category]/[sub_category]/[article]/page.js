@@ -2,7 +2,6 @@ import React, { Suspense } from "react";
 import Image from "next/image";
 import Loading from "./loading";
 import getArticle from "@/utils/lib/articles/article";
-
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }) {
@@ -11,22 +10,33 @@ export async function generateMetadata({ params }) {
         params.sub_category,
         params.article
     );
-    const concatedDes = articleObject.article.join(" ").slice(0, 150) + "...";
+    const concatedDes = articleObject.article.join(" ").slice(0, 147) + "...";
     return {
         title: articleObject.headline,
         description: concatedDes,
         date: `${articleObject.date}`,
         keywords: articleObject.keywords.slice(0, 10),
-        url: `${process.env.API_URL}/${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`,
-        metadataBase: `${process.env.API_URL}`,
+        url: `https://headlinehorizon.com/${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`,
+        metadataBase: `https://headlinehorizon.com`,
+        lang: "en",
         openGraph: {
             title: articleObject.headline,
+            width: 1200,
             description: concatedDes,
             type: "article",
             images: articleObject.images.map((image) => `${image.image_url}`),
-            url: `${process.env.API_URL}/${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`,
+            url: `https://headlinehorizon.com/${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`,
             local: "en_US",
-            site_name: `${process.env.API_URL}`,
+            site_name: `https://headlinehorizon.com`,
+            card: concatedDes,
+        },
+        twitter: {
+            title: articleObject.headline,
+            description: concatedDes,
+            site: "https://headlinehorizon.com",
+            creator: "Headline Horizon",
+            images: articleObject.images.map((image) => `${image.image_url}`),
+            card: concatedDes,
         },
     };
 }

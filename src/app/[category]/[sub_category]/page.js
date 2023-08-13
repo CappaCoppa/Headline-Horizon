@@ -20,6 +20,8 @@ const mappingSubCategoryArticles = (array) => {
                             alt={article.image.image_alt}
                             width={650}
                             height={400}
+                            placeholder="blur"
+                            blurDataURL={article.image.mini_image_url}
                         />
                     </div>
                     <div className="relative w-[100%] sm:w-3/4 p-8">
@@ -51,8 +53,6 @@ export default async function SubCategory({ params, searchParams }) {
         subCategory,
         show
     );
-
-    console.log(articlesLength);
 
     return (
         <main>
