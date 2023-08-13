@@ -16,7 +16,11 @@ export async function generateMetadata({ params }) {
         description: concatedDes,
         date: `${articleObject.date}`,
         keywords: articleObject.keywords.slice(0, 10),
-        url: `https://headlinehorizon.com/${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`,
+        url: `https://headlinehorizon.com/${encodeURIComponent(
+            articleObject.category
+        )}/${encodeURIComponent(articleObject.sub_category)}/${
+            articleObject._id
+        }`,
         metadataBase: `https://headlinehorizon.com`,
         lang: "en",
         openGraph: {
@@ -25,17 +29,20 @@ export async function generateMetadata({ params }) {
             description: concatedDes,
             type: "article",
             images: articleObject.images.map((image) => `${image.image_url}`),
-            url: `https://headlinehorizon.com/${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`,
+            url: `https://headlinehorizon.com/${encodeURIComponent(
+                articleObject.category
+            )}/${encodeURIComponent(articleObject.sub_category)}/${
+                articleObject._id
+            }`,
             local: "en_US",
             site_name: `Headline Horizon`,
             card: concatedDes,
         },
         twitter: {
-            card: articleObject.images.map((image) => image.image_alt),
             title: articleObject.headline,
             description: concatedDes,
             site: "https://headlinehorizon.com",
-            creator: "@H@TildonTim",
+            creator: "@TildonTim",
             images: articleObject.images.map((image) => `${image.image_url}`),
             card: concatedDes,
             local: "en_US",

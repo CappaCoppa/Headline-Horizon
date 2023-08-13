@@ -3,12 +3,47 @@ import getCategory from "@/utils/lib/categories/category";
 import Link from "next/link";
 import Image from "next/image";
 
+export async function generateMetadata({ params }) {
+    const { title, description } = await getCategory(params.category);
+    const concatedDes = description.slice(0, 147) + "...";
+
+    return {
+        title: title,
+        description: concatedDes,
+        date: new Date(),
+        image: "../../../public.america.webp",
+        url: `https://headlinehorizon.com/${encodeURIComponent(title)}`,
+        lang: "en_US",
+        metadataBase: `https://headlinehorizon.com`,
+        openGraph: {
+            title: title,
+            imageWidth: 1200,
+            description: concatedDes,
+            type: "website",
+            image: "../../../../public/america.webp",
+            url: `https://headlinehorizon.com/${encodeURIComponent(title)}`,
+            local: "en_US",
+            site_name: `Headline Horizon`,
+            card: concatedDes,
+        },
+        twitter: {
+            title: title,
+            description: concatedDes,
+            site: "https://headlinehorizon.com",
+            creator: "@TildonTim",
+            image: "../../../../public/america.webp",
+            card: concatedDes,
+            local: "en_US",
+        },
+    };
+}
+
 export default async function Category({ params }) {
     const title = params.category;
     const category = await getCategory(title);
     const mappedContent = category.sub_category.map(
         async (sub_category, index) => {
-            const { articles, articlesLength } = await getSubCategoryArticles(
+            const { articles } = await getSubCategoryArticles(
                 title,
                 sub_category.title
             );
@@ -190,20 +225,7 @@ export default async function Category({ params }) {
                     {title}
                 </h1>
                 <h2 className="text-h7 md:text-h6 text-black-50">
-                    {" "}
-                    Welcome to the Lifestyle section of Headline Horizon, your
-                    reliable source for embracing the quintessential American
-                    way of life. Are you seeking time-honored recipes and fine
-                    beverages in our Food and Drink segment? Intrigued by sturdy
-                    Cars and dependable Trucks? Yearning for the freedom of
-                    Travel and the tranquility of the Outdoors, or the comfort
-                    of your House and Home? Eager to improve your Fitness and
-                    elevate your Well-being, or stay updated with tasteful Style
-                    and timeless Beauty? Need wisdom on nurturing Family values
-                    or seeking spiritual enrichment through Faith? Discover all
-                    this and more in our carefully crafted categories. Join us
-                    on this journey, and experience the very essence of the
-                    American dream.
+                    {category.description}
                 </h2>
             </div>
             <div>{mappedContent}</div>

@@ -21,6 +21,17 @@ export const metadata = {
         "U.S. political updates",
         "American news insights",
     ],
+    lang: "en_US",
+    metadataBase: `https://headlinehorizon.com`,
+    openGraph: {
+        title: "U.S. News - In-depth American Analysis | Headline Horizon",
+        description:
+            "Headline Horizon: Your gateway to the latest U.S. news, stories, and updates. Dive deep into America's pulse with trusted reporting and in-depth analysis. Stay informed, stay ahead!",
+        type: "website",
+        url: "https://www.headlinehorizon.com/",
+        site_name: "Headline Horizon",
+        local: "en_US",
+    },
 };
 
 export default function RootLayout({ children }) {

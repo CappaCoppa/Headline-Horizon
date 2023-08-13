@@ -1,7 +1,49 @@
 import Image from "next/image";
 import Link from "next/link";
 import getSubCategoryArticles from "@/utils/lib/articles/sub_category";
+import getCategory from "@/utils/lib/categories/category";
 import { ShowMoreButton } from "@/components/ShowMoreButton";
+import dog from "";
+export async function generateMetadata({ params }) {
+    const { category, sub_category } = await getCategory(params.category);
+    const subCategory = sub_category.find(
+        (item) => (item.title = params.sub_category)
+    );
+
+    const concatedDes = subCategory.description.slice(0, 147) + "...";
+    return {
+        title: subCategory.title,
+        description: concatedDes,
+        date: new Date(),
+        url: `https://headlinehorizon.com/${encodeURIComponent(
+            category.title
+        )}/${encodeURIComponent(subCategory.title)}`,
+        metadataBase: `https://headlinehorizon.com`,
+        lang: "en",
+        openGraph: {
+            title: subCategory.title,
+            imageWidth: 1200,
+            description: concatedDes,
+            type: "website",
+            image: "../../../../public/america.webp",
+            url: `https://headlinehorizon.com/${encodeURIComponent(
+                category.title
+            )}/${encodeURIComponent(subCategory.title)}`,
+            local: "en_US",
+            site_name: `Headline Horizon`,
+            card: concatedDes,
+        },
+        twitter: {
+            title: subCategory.title,
+            description: concatedDes,
+            site: "https://headlinehorizon.com",
+            creator: "@TildonTim",
+            image: "../../../../public/america.webp",
+            card: concatedDes,
+            local: "en_US",
+        },
+    };
+}
 
 const mappingSubCategoryArticles = (array) => {
     return array.map((article, index) => {
