@@ -3,7 +3,6 @@ import Link from "next/link";
 import getSubCategoryArticles from "@/utils/lib/articles/sub_category";
 import getCategory from "@/utils/lib/categories/category";
 import { ShowMoreButton } from "@/components/ShowMoreButton";
-import dog from "";
 export async function generateMetadata({ params }) {
     const { category, sub_category } = await getCategory(params.category);
     const subCategory = sub_category.find(
@@ -15,10 +14,10 @@ export async function generateMetadata({ params }) {
         title: subCategory.title,
         description: concatedDes,
         date: new Date(),
-        url: `https://headlinehorizon.com/${encodeURIComponent(
+        url: `${process.env.API_URL}/${encodeURIComponent(
             category.title
         )}/${encodeURIComponent(subCategory.title)}`,
-        metadataBase: `https://headlinehorizon.com`,
+        metadataBase: `${process.env.API_URL}`,
         lang: "en",
         openGraph: {
             title: subCategory.title,
@@ -26,20 +25,22 @@ export async function generateMetadata({ params }) {
             description: concatedDes,
             type: "website",
             image: "../../../../public/america.webp",
-            url: `https://headlinehorizon.com/${encodeURIComponent(
+            url: `${process.env.API_URL}/${encodeURIComponent(
                 category.title
             )}/${encodeURIComponent(subCategory.title)}`,
             local: "en_US",
             site_name: `Headline Horizon`,
-            card: concatedDes,
         },
         twitter: {
             title: subCategory.title,
             description: concatedDes,
-            site: "https://headlinehorizon.com",
+            domain: `${process.env.API_URL}`,
+            url: `${process.env.API_URL}/${encodeURIComponent(
+                category.title
+            )}/${encodeURIComponent(subCategory.title)}`,
             creator: "@TildonTim",
             image: "../../../../public/america.webp",
-            card: concatedDes,
+            card: "summary_large_image",
             local: "en_US",
         },
     };

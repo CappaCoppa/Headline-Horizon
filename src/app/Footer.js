@@ -5,8 +5,6 @@ import Link from "next/link";
 export const Footer = async () => {
     const categories = await getCategories();
 
-    console.log(categories);
-
     const mappingCategories = categories.map((category, index) => {
         const subCategories = category.subcategory_title.map(
             (subCategory, index1) => (

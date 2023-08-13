@@ -16,12 +16,12 @@ export async function generateMetadata({ params }) {
         description: concatedDes,
         date: `${articleObject.date}`,
         keywords: articleObject.keywords.slice(0, 10),
-        url: `https://headlinehorizon.com/${encodeURIComponent(
+        url: `${process.env.API_URL}/${encodeURIComponent(
             articleObject.category
         )}/${encodeURIComponent(articleObject.sub_category)}/${
             articleObject._id
         }`,
-        metadataBase: `https://headlinehorizon.com`,
+        metadataBase: `${process.env.API_URL}`,
         lang: "en",
         openGraph: {
             title: articleObject.headline,
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }) {
             description: concatedDes,
             type: "article",
             images: articleObject.images.map((image) => `${image.image_url}`),
-            url: `https://headlinehorizon.com/${encodeURIComponent(
+            url: `${process.env.API_URL}/${encodeURIComponent(
                 articleObject.category
             )}/${encodeURIComponent(articleObject.sub_category)}/${
                 articleObject._id
@@ -40,11 +40,16 @@ export async function generateMetadata({ params }) {
         },
         twitter: {
             title: articleObject.headline,
+            card: "summary_large_image",
+            domain: `${process.env.API_URL}`,
+            url: `${process.env.API_URL}/${encodeURIComponent(
+                articleObject.category
+            )}/${encodeURIComponent(articleObject.sub_category)}/${
+                articleObject._id
+            }`,
             description: concatedDes,
-            site: "https://headlinehorizon.com",
             creator: "@TildonTim",
             images: articleObject.images.map((image) => `${image.image_url}`),
-            card: concatedDes,
             local: "en_US",
         },
     };

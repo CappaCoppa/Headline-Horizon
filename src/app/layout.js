@@ -32,6 +32,16 @@ export const metadata = {
         site_name: "Headline Horizon",
         local: "en_US",
     },
+    twitter: {
+        title: "U.S. News - In-depth American Analysis | Headline Horizon",
+        description:
+            "Headline Horizon: Your gateway to the latest U.S. news, stories, and updates. Dive deep into America's pulse with trusted reporting and in-depth analysis. Stay informed, stay ahead!",
+        site: `${process.env.API_URL}`,
+        creator: "@TildonTim",
+        image: "../../../../public/america.webp",
+        card: "summary_large_image",
+        local: "en_US",
+    },
 };
 
 export default function RootLayout({ children }) {
