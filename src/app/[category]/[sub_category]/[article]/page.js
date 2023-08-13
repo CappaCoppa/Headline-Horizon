@@ -21,22 +21,24 @@ export async function generateMetadata({ params }) {
         lang: "en",
         openGraph: {
             title: articleObject.headline,
-            width: 1200,
+            imageWidth: 1200,
             description: concatedDes,
             type: "article",
             images: articleObject.images.map((image) => `${image.image_url}`),
             url: `https://headlinehorizon.com/${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`,
             local: "en_US",
-            site_name: `https://headlinehorizon.com`,
+            site_name: `Headline Horizon`,
             card: concatedDes,
         },
         twitter: {
+            card: articleObject.images.map((image) => image.image_alt),
             title: articleObject.headline,
             description: concatedDes,
             site: "https://headlinehorizon.com",
-            creator: "Headline Horizon",
+            creator: "@H@TildonTim",
             images: articleObject.images.map((image) => `${image.image_url}`),
             card: concatedDes,
+            local: "en_US",
         },
     };
 }
