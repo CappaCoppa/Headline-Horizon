@@ -28,7 +28,7 @@ export const ShowMoreButton = ({ articlesLength }) => {
             onClick={handleClick}
             className="p-16 text-center align-middle cursor-pointer bg-primary hover:bg-primary-opacity-0.30 transition-all ease-in-out"
         >
-            <p className="uppercase font-antic text-h6 text-black-5">
+            <p className="uppercase font-antic text-h6 text-black-5 font-NotoSans">
                 show more
             </p>
         </div>

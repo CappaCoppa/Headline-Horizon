@@ -111,7 +111,7 @@ export default async function Article({ params }) {
                             )}
                         </div>
                     )}
-                    <p className="text-black text-left py-16 text-h6">
+                    <p className="text-black text-left py-16 text-h6 font-NotoSans">
                         {sentence}
                     </p>
                 </React.Fragment>
@@ -134,23 +134,23 @@ export default async function Article({ params }) {
     // })
 
     return (
-        <main className="bg-black-5 px-16 md:px-64 py-32">
-            <div className="items-center align-middle flex justify-center gap-8 pb-8">
+        <main className="bg-black-5 px-16 md:px-32 py-32">
+            <div className="items-center align-middle flex justify-center gap-8 pb-8 font-NotoSans">
                 <p className="text-h8 md:text-h7 font-bold text-primary uppercase">
                     {articleObject.sub_category}
                 </p>
                 <div className="rounded-full bg-black-25 w-[4px] h-[4px]"></div>
-                <p>
+                <p className="text-h8 font-bold uppercase ">
                     <span className="text-h8 md:text-h7 font-bold uppercase">
-                        published:{" "}
+                        published :{" "}
                     </span>{" "}
                     {articleObject.date}
                 </p>
             </div>
-            <h1 className="text-h5 sm:text-h4 md:text-h3 lg:text-h2 xl:text-h1 lg:px-128 md:px-64 text-black font-antic uppercase text-center font-bold pb-16">
+            <h1 className="text-h5 sm:text-h4 md:text-h3 lg:text-h2 xl:text-h1 lg:px-128 md:px-64 text-black font-NotoSerif uppercase text-center font-bold pb-16">
                 {articleObject.headline}
             </h1>
-            <h2 className="text-h7 sm:text-h6 md:text-h5 lg:text-h4 xl:text-h3 lg:px-256 md:px-128 pb-16 text-black text-center">
+            <h2 className="text-h7 sm:text-h6 md:text-h5 lg:text-h4 xl:text-h3 lg:px-256 md:px-128 pb-16 text-black text-center font-NotoSans">
                 {articleObject.sub_headline}
             </h2>
             <div className="md:flex border-y-black-10 border-y-2 py-16 md:gap-16">
@@ -163,7 +163,7 @@ export default async function Article({ params }) {
                     </div>
                     <div className="py-16 sticky top-0 max-w-fit">
                         <div className="flex flex-col w-full">
-                            <h6 className="text-black-5 bg-primary  font-antic text-left p-8 uppercase w-full">
+                            <h6 className="text-black-5 bg-primary  font-NotoSerif text-left p-8 uppercase w-full">
                                 Related Articles
                             </h6>
                             {/* {mappingRelatedArticles()} */}

@@ -1,6 +1,18 @@
 import "./globals.css";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
+import { Noto_Serif, Noto_Sans } from "next/font/google";
+
+const NotoSerif = Noto_Serif({
+    subsets: ["latin"],
+    variable: "--font-Noto-Serif",
+});
+
+const NotoSans = Noto_Sans({
+    subsets: ["latin"],
+    variable: "--font-Noto-Sans",
+    weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
 
 export const metadata = {
     title: {
@@ -22,13 +34,13 @@ export const metadata = {
         "American news insights",
     ],
     lang: "en_US",
-    metadataBase: `https://headlinehorizon.com`,
+    metadataBase: `${process.env.API_URL}`,
     openGraph: {
         title: "U.S. News - In-depth American Analysis | Headline Horizon",
         description:
             "Headline Horizon: Your gateway to the latest U.S. news, stories, and updates. Dive deep into America's pulse with trusted reporting and in-depth analysis. Stay informed, stay ahead!",
         type: "website",
-        url: "https://www.headlinehorizon.com/",
+        url: `${process.env.API_URL}`,
         site_name: "Headline Horizon",
         local: "en_US",
     },
@@ -43,11 +55,12 @@ export const metadata = {
         local: "en_US",
     },
 };
-
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
-            <body className="overflow-x-hidden w-[100%]">
+            <body
+                className={`${NotoSerif.variable} ${NotoSans.variable} overflow-x-hidden w-[100%]`}
+            >
                 <Header />
                 {children}
                 <Footer />

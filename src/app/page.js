@@ -33,14 +33,14 @@ const mappedTopArticles = async (array) =>
                                 blurDataURL={articleObject.image.mini_image_url}
                                 priority={true}
                             />
-                            <p className=" bg-secondary-opacity-0.20 absolute bottom-0 m-16 font-semibold tracking-wider px-16 py-8 font-antic uppercase text-black-10">
+                            <p className=" bg-secondary-opacity-0.20 absolute bottom-0 m-16 font-semibold tracking-wider px-16 py-8 font-NotoSerif uppercase text-black-10">
                                 {articleObject.sub_category}
                             </p>
                         </div>
-                        <h1 className=" text-h6 sm:text-h5 lg:text-h4 font-antic cursor-pointer transition-all hover:underline text-black-10 border-b pb-16 my-16 uppercase">
+                        <h1 className=" text-h6 sm:text-h5 lg:text-h4 font-NotoSerif cursor-pointer transition-all hover:underline text-black-10 border-b pb-16 my-16 uppercase">
                             {articleObject.headline}
                         </h1>
-                        <div className="flex flex-col justify-between">
+                        <div className="flex flex-col justify-between font-NotoSans">
                             <h2 className="text-black-25 text-h7 sm:text-h6 cursor-pointer">
                                 {truncatedArticle}
                             </h2>
@@ -72,11 +72,11 @@ const mappedTopArticles = async (array) =>
                                 placeholder={"blur"}
                                 blurDataURL={articleObject.image.mini_image_url}
                             />
-                            <p className=" bg-secondary-opacity-0.20 absolute bottom-0 m-16 font-semibold tracking-wider px-16 py-8 font-antic uppercase text-black-10">
+                            <p className=" bg-secondary-opacity-0.20 absolute bottom-0 m-16 tracking-wider px-16 py-8 font-NotoSerif uppercase text-black-10">
                                 {articleObject.sub_category}
                             </p>
                         </div>
-                        <h3 className="text-h6 sm:text-h5 font-antic cursor-pointer transition-all hover:underline text-black-10 border-b pb-16 my-16 uppercase">
+                        <h3 className="text-h6 sm:text-h5 font-NotoSerif cursor-pointer transition-all hover:underline text-black-10 border-b pb-16 my-16 uppercase">
                             {articleObject.headline}
                         </h3>
                     </Link>
@@ -104,10 +104,10 @@ const mappingNormalArticles = (array) =>
                         alt={articleObject.image.image_alt}
                         loading="lazy"
                     />
-                    <h6 className=" cursor-pointer transition-all hover:underline font-semibold tracking-wider font-antic text-primary py-8 uppercase">
+                    <h6 className=" cursor-pointer transition-all hover:underline font-semibold tracking-wider font-NotoSerif text-primary py-8 uppercase">
                         {articleObject.headline}
                     </h6>
-                    <div className=" flex justify-between border-t border-primary py-8 ">
+                    <div className=" flex justify-between border-t border-primary py-8 font-NotoSans ">
                         <p className=" uppercase text-primary">
                             {articleObject.date}
                         </p>

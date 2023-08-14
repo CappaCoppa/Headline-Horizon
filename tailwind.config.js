@@ -2,7 +2,8 @@ module.exports = {
     content: ["./src/app/**/*.{js,ts,jsx,tsx}"],
     theme: {
         fontFamily: {
-            antic: ["Antic Didone", "serif"],
+            NotoSerif: "var(--font-Noto-Serif)",
+            NotoSans: "var(--font-Noto-Sans)",
         },
         colors: {
             primary: "#002868",

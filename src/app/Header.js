@@ -1,6 +1,9 @@
 import Link from "next/link";
 import React from "react";
 import { ClientComp } from "@/components/ClientComp";
+import Image from "next/image";
+import MobileH from "../../public/mobile-H.svg";
+import DesktopH from "../../public/desktop-H.svg";
 
 export const Header = () => {
     const categories = [
@@ -17,7 +20,7 @@ export const Header = () => {
 
     const mappedCategories = categories.map((title, index) => (
         <Link key={index} href={`${process.env.API_URL}/${title}`}>
-            <p className="text-h6 tracking-wider text-black-5 font-antic uppercase cursor-pointer transition-all duration-300 hover:text-black-25">
+            <p className="text-h6 tracking-wider text-black-5 font-NotoSerif uppercase cursor-pointer transition-all duration-300 hover:text-black-25">
                 {title}
             </p>
         </Link>
@@ -25,14 +28,14 @@ export const Header = () => {
 
     return (
         <div>
-            <div className="bg-primary px-16 md:px-32 xl:px-64 py-0 flex justify-between items-center">
+            <div className="bg-primary px-16 md:px-32 md:py-8 flex justify-between gap-16 items-center">
                 <Link href={process.env.API_URL}>
-                    <h1 className=" text-h2 cursor-pointer font-antic p-0 m-0 uppercase text-black-5 xl:hidden">
-                        H H
-                    </h1>
-                    <h1 className=" text-h2 cursor-pointer font-antic p-0 m-0 uppercase text-black-5 hidden xl:block">
-                        Headline Horizon
-                    </h1>
+                    <div className="  text-h2 cursor-pointer py-8 m-0  text-black-5 xl:hidden">
+                        <Image src={MobileH} width={80} height={80} />
+                    </div>
+                    <div className=" text-h2 cursor-pointer  py-8  text-black-5 hidden xl:block">
+                        <Image src={DesktopH} width={600} height={500} />
+                    </div>
                 </Link>
                 <div>
                     <ClientComp categories={categories} />

@@ -14,7 +14,7 @@ export const Footer = async () => {
                         category.category_title
                     )}/${encodeURIComponent(subCategory)}`}
                 >
-                    <p className="cursor-pointer text-black-25 font-semibold my-1 py-1 transition-all duration-300 hover:opacity-50 shadow-black-5 text-left">
+                    <p className="cursor-pointer font-NotoSans text-black-25 font-semibold my-1 py-1 transition-all duration-300 hover:opacity-50 shadow-black-5 text-left">
                         {subCategory}
                     </p>
                 </Link>
@@ -30,7 +30,7 @@ export const Footer = async () => {
                             category.category_title
                         )}`}
                     >
-                        <h4 className=" cursor-pointer font-antic  text-black-5 transition-all duration-300 hover:opacity-50 text-left">
+                        <h4 className="text-h5 cursor-pointer font-NotoSerif  text-black-5 transition-all duration-300 hover:opacity-50 text-left">
                             {category.category_title}
                         </h4>
                     </Link>
