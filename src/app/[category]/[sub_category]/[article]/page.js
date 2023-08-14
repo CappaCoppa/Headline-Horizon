@@ -118,21 +118,6 @@ export default async function Article({ params }) {
             );
         });
 
-    // const relatedArticles = await getSubCategoryArticles(
-    // 	params.category,
-    // 	params.sub_category
-    // );
-
-    // const cutArticles = relatedArticles.slice(0, 2);
-
-    // const mappedRelatedArticles = cutArticles.map(article => {
-    // 	return (
-    // 		<div className="">
-    // 			<
-    // 		</div>
-    // 	)
-    // })
-
     return (
         <main className="bg-black-5 px-16 md:px-32 py-32">
             <div className="items-center align-middle flex justify-center gap-8 pb-8 font-NotoSans">
@@ -159,15 +144,10 @@ export default async function Article({ params }) {
                 </Suspense>
                 <div className="border-l-2 border-black-10 pl-8 hidden  md:flex-col w-1/4 md:hidden">
                     <div className="max-h-[550px] w-[100%] text-center flex justify-center items-center">
-                        <h6> {"   "}</h6>
+                        <p> {"   "}</p>
                     </div>
                     <div className="py-16 sticky top-0 max-w-fit">
-                        <div className="flex flex-col w-full">
-                            <h6 className="text-black-5 bg-primary  font-NotoSerif text-left p-8 uppercase w-full">
-                                Related Articles
-                            </h6>
-                            {/* {mappingRelatedArticles()} */}
-                        </div>
+                        <div className="flex flex-col w-full"></div>
                     </div>
                 </div>
             </div>

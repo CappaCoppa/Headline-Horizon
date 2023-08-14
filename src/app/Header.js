@@ -1,5 +1,4 @@
 import Link from "next/link";
-import React from "react";
 import { ClientComp } from "@/components/ClientComp";
 import Image from "next/image";
 import MobileH from "../../public/mobile-H.svg";

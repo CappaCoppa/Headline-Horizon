@@ -30,9 +30,9 @@ export const Footer = async () => {
                             category.category_title
                         )}`}
                     >
-                        <h4 className="text-h5 cursor-pointer font-NotoSerif  text-black-5 transition-all duration-300 hover:opacity-50 text-left">
+                        <h3 className="text-h5 cursor-pointer font-NotoSerif  text-black-5 transition-all duration-300 hover:opacity-50 text-left">
                             {category.category_title}
-                        </h4>
+                        </h3>
                     </Link>
                     <div className="border-b-[1px] mb-8 text-black-5 text"></div>
 

@@ -75,10 +75,10 @@ const mappingSubCategoryArticles = (array) => {
                             </p>
                             <div className="rounded-full bg-black-25 w-[4px] h-[4px]" />
                         </div>
-                        <h3 className="font-NotoSerif text-h5 text-primary font-semibold transition-all ease-in-out hover:underline">
+                        <h2 className="font-NotoSerif text-h5 text-primary font-semibold transition-all ease-in-out hover:underline">
                             {article.headline}
-                        </h3>
-                        <p className="text-black-50 hidden lg:block font-NotoSans">
+                        </h2>
+                        <p className="text-black-75 hidden lg:block font-NotoSans">
                             {`${article.article[0]} ${article.article[1]}..`}
                         </p>
                     </div>

@@ -1,8 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import getArticles from "@/utils/lib/articles/articles";
-import base64 from "base-64";
-import utf8 from "utf8";
 
 export const dynamic = "force-dynamic";
 
@@ -11,8 +9,6 @@ export const metadata = { title: "Headline Horizon - Home" };
 const mappedTopArticles = async (array) =>
     array.map(async (articleObject, index) => {
         const truncatedArticle = articleObject.article.slice(0, 200) + "...";
-        const bytes = utf8.encode(articleObject.image.mini_image_url);
-        const encoded = base64.encode(bytes);
 
         if (index === 0) {
             return (
@@ -25,12 +21,10 @@ const mappedTopArticles = async (array) =>
                     >
                         <div className="relative">
                             <Image
-                                width="2000"
-                                height="1000"
+                                width="1300"
+                                height="1"
                                 src={articleObject.image.image_url}
                                 alt={articleObject.image.image_alt}
-                                placeholder={"blur"}
-                                blurDataURL={articleObject.image.mini_image_url}
                                 priority={true}
                             />
                             <p className=" bg-secondary-opacity-0.20 absolute bottom-0 m-16 font-semibold tracking-wider px-16 py-8 font-NotoSerif uppercase text-black-10">
@@ -66,11 +60,9 @@ const mappedTopArticles = async (array) =>
                         <div className="relative">
                             <Image
                                 width="700"
-                                height="400"
+                                height="1"
                                 src={articleObject.image.image_url}
                                 alt={articleObject.image.image_alt}
-                                placeholder={"blur"}
-                                blurDataURL={articleObject.image.mini_image_url}
                             />
                             <p className=" bg-secondary-opacity-0.20 absolute bottom-0 m-16 tracking-wider px-16 py-8 font-NotoSerif uppercase text-black-10">
                                 {articleObject.sub_category}
@@ -96,17 +88,15 @@ const mappingNormalArticles = (array) =>
                     href={`${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`}
                 >
                     <Image
-                        placeholder="blur"
-                        blurDataURL={articleObject.image.mini_image_url}
                         width={600}
-                        height={500}
+                        height={1}
                         src={articleObject.image.image_url}
                         alt={articleObject.image.image_alt}
                         loading="lazy"
                     />
-                    <h6 className=" cursor-pointer transition-all hover:underline font-semibold tracking-wider font-NotoSerif text-primary py-8 uppercase">
+                    <h4 className="text-h6 cursor-pointer transition-all hover:underline font-semibold tracking-wider font-NotoSerif text-primary py-8 uppercase">
                         {articleObject.headline}
-                    </h6>
+                    </h4>
                     <div className=" flex justify-between border-t border-primary py-8 font-NotoSans ">
                         <p className=" uppercase text-primary">
                             {articleObject.date}

@@ -134,7 +134,7 @@ export default async function Category({ params }) {
                                         <h3 className="font-NotoSerif text-h6 uppercase text-primary font-semibold transition-all ease-in-out hover:underline">
                                             {article.headline}
                                         </h3>
-                                        <p className="text-black-50 hidden lg:block font-NotoSans">
+                                        <p className="text-black-75 hidden lg:block font-NotoSans">
                                             {`${article.article[0]} ${article.article[1]}..`}
                                         </p>
                                     </div>
@@ -195,7 +195,7 @@ export default async function Category({ params }) {
                                         <h3 className="font-NotoSerif text-h5 text-primary font-semibold transition-all ease-in-out hover:underline">
                                             {article.headline}
                                         </h3>
-                                        <p className="text-black-50">{`${article.article[0]}`}</p>
+                                        <p className="text-black-75">{`${article.article[0]}`}</p>
                                     </div>
                                 </div>
                             </Link>
@@ -232,7 +232,7 @@ export default async function Category({ params }) {
                         {title}
                     </h1>
                 </Link>
-                <h2 className="text-h7 md:text-h6 text-black-50">
+                <h2 className="text-h7 md:text-h6 text-black-75">
                     {category.category.description}
                 </h2>
             </div>
