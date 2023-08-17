@@ -1,7 +1,7 @@
 import React from "react";
 import { getPrivacyData } from "@/utils/lib/privacy/privacy";
 
-const Privacy = async () => {
+export default async function Privacy() {
     const { title, sections } = await getPrivacyData();
 
     const mappedSections = sections.map((section) => (
@@ -23,6 +23,4 @@ const Privacy = async () => {
             <div>{mappedSections}</div>
         </div>
     );
-};
-
-export default Privacy;
+}

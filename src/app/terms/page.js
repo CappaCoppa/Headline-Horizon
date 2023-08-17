@@ -1,7 +1,7 @@
 import React from "react";
 import { getTermsData } from "@/utils/lib/terms/terms";
 
-const Terms = async () => {
+export default async function Terms() {
     const { title, sections } = await getTermsData();
 
     const mappedSections = sections.map((section) => (
@@ -23,6 +23,4 @@ const Terms = async () => {
             <div>{mappedSections}</div>
         </div>
     );
-};
-
-export default Terms;
+}
