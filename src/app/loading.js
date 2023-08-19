@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Spinner from "../../public/spinner.gif";
+import Spinner from "../../public/spinner.webp";
 
 export default async function Loading() {
     return (
