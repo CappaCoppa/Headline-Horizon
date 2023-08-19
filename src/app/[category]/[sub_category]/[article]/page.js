@@ -1,6 +1,5 @@
 import React, { Suspense } from "react";
 import Image from "next/image";
-import Loading from "./loading";
 import getArticle from "@/utils/lib/articles/article";
 export const dynamic = "force-dynamic";
 
@@ -78,24 +77,22 @@ export default async function Article({ params }) {
                     {shouldDisplayImage && (
                         <div className="display flex flex-col">
                             <div className="relative">
-                                <Suspense fallback={<Loading />}>
-                                    <Image
-                                        width={2000}
-                                        height={1000}
-                                        src={
-                                            articleObject.images[imageIndex]
-                                                .image_url
-                                        }
-                                        alt={
-                                            articleObject.images[imageIndex]
-                                                .image_alt
-                                        }
-                                        className="align-middle h-auto transition-opacity opacity-1 duration-[2s]"
-                                        priority={index === 0 ? true : false}
-                                        loading={index === 0 ? "eager" : "lazy"}
-                                        quality={50}
-                                    />
-                                </Suspense>
+                                <Image
+                                    width={2000}
+                                    height={1000}
+                                    src={
+                                        articleObject.images[imageIndex]
+                                            .image_url
+                                    }
+                                    alt={
+                                        articleObject.images[imageIndex]
+                                            .image_alt
+                                    }
+                                    className="align-middle h-auto transition-opacity opacity-1 duration-[2s]"
+                                    priority={index === 0 ? true : false}
+                                    loading={index === 0 ? "eager" : "lazy"}
+                                    quality={50}
+                                />
                             </div>
                             {index === 0 && (
                                 <audio
@@ -139,9 +136,8 @@ export default async function Article({ params }) {
                 {articleObject.sub_headline}
             </h2>
             <div className="md:flex border-y-black-10 border-y-2 py-16 md:gap-16">
-                <Suspense fallback={<p>Loading...</p>}>
-                    <div className="md:w-3/4">{mappingContent()}</div>
-                </Suspense>
+                <div className="md:w-3/4">{mappingContent()}</div>
+
                 <div className="border-l-2 border-black-10 pl-8 hidden  md:flex-col w-1/4 md:hidden">
                     <div className="max-h-[550px] w-[100%] text-center flex justify-center items-center">
                         <p> {"   "}</p>

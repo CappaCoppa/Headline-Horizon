@@ -1,11 +1,13 @@
 import React from "react";
-import { getPrivacyData } from "@/utils/lib/privacy/privacy";
+export const dynamic = "force-dynamic";
 
 export default async function Privacy() {
-    const { title, sections } = await getPrivacyData();
-
-    const mappedSections = sections.map((section) => (
-        <div className="py-16">
+    const data = await fetch(`${process.env.API_URL}/api/privacy`, {
+        cache: "force-cache",
+    });
+    const { title, sections } = await data.json();
+    const mappedSections = sections.map((section, index) => (
+        <div className="py-16" key={index}>
             <h2 className="text-h5 md:text-h3 font-NotoSerif">
                 {section.title}
             </h2>

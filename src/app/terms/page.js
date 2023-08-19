@@ -1,11 +1,14 @@
 import React from "react";
-import { getTermsData } from "@/utils/lib/terms/terms";
+export const dynamic = "force-dynamic";
 
 export default async function Terms() {
-    const { title, sections } = await getTermsData();
+    const data = await fetch(`${process.env.API_URL}/api/terms`, {
+        cache: "force-cache",
+    });
 
-    const mappedSections = sections.map((section) => (
-        <div className="py-16">
+    const { title, sections } = await data.json();
+    const mappedSections = sections.map((section, index) => (
+        <div className="py-16" key={index}>
             <h2 className="text-h5 md:text-h3 font-NotoSerif">
                 {section.title}
             </h2>

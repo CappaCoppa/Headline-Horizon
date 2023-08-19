@@ -49,7 +49,7 @@ export const Footer = async () => {
             <div className="bg-primary py-32 px-32 lg:px-192 grid grid-cols-2 md:grid-cols-3 gap-16">
                 {mappingCategories}
             </div>
-            <div className="bg-primary-darker py-32 px-32  lg:px-192 flex justify-between items-center">
+            <div className="bg-primary-darker py-8 px-32  lg:px-192 flex justify-between items-center">
                 <Image src={Logo} width={40} height={40} />
                 <div className="flex flex-row gap-8 font-NotoSans text-h8 text-black-25">
                     <Link

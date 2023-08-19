@@ -97,7 +97,6 @@ export default async function SubCategory({ params, searchParams }) {
         subCategory,
         show
     );
-    console.log(articles);
 
     return (
         <main>
