@@ -4,7 +4,7 @@ import getArticles from "@/utils/lib/articles/articles";
 
 export const dynamic = "force-dynamic";
 
-export const metadata = { title: "Headline Horizon - Home" };
+export const metadata = { title: "Headline Horizon" };
 
 const mappedTopArticles = async (array) =>
     array.map(async (articleObject, index) => {
