@@ -64,6 +64,15 @@ export default function RootLayout({ children }) {
                     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3446792269165420"
                     crossorigin="anonymous"
                 ></script>
+                <script
+                    async
+                    src="https://www.googletagmanager.com/gtag/js?id=G-RG4F81S1L1"
+                ></script>
+                <script>
+                    window.dataLayer = window.dataLayer || []; function gtag()
+                    {dataLayer.push(arguments)}
+                    gtag('js', new Date()); gtag('config', 'G-RG4F81S1L1')
+                </script>
             </head>
             <body
                 className={`${NotoSerif.variable} ${NotoSans.variable} overflow-x-hidden w-[100%]`}
