@@ -67,12 +67,12 @@ export default async function Category({ params }) {
                                     placeholder="blur"
                                     blurDataURL={article.image.mini_image_url}
                                 />
-                                <p className=" text-h6 uppercase cursor-pointer transition-all hover:underline font-semibold font-NotoSerif text-primary py-8">
+                                <h3 className=" text-h6 uppercase cursor-pointer transition-all hover:underline font-semibold font-NotoSerif text-primary py-8">
                                     {article.headline}
-                                </p>
+                                </h3>
                                 <div className="flex justify-between border-t border-primary py-8 font-NotoSans">
                                     <p className=" text-h7 uppercase text-primary">
-                                        {article.date}
+                                        {article.date.slice(0, 10)}
                                     </p>
                                     <p className=" text-h7 cursor-pointer font-bold transition-all hover:underline uppercase text-secondary">
                                         {article.sub_category}
@@ -192,7 +192,7 @@ export default async function Category({ params }) {
                                             </p>
                                             <div className="rounded-full bg-black-25 w-[4px] h-[4px]" />
                                         </div>
-                                        <h3 className="font-NotoSerif text-h5 text-primary font-semibold transition-all ease-in-out hover:underline">
+                                        <h3 className="font-NotoSerif text-h6 font-semibold text-primary uppercase transition-all ease-in-out hover:underline">
                                             {article.headline}
                                         </h3>
                                         <p className="text-black-75">{`${article.article[0]}`}</p>

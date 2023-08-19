@@ -75,7 +75,7 @@ const mappingSubCategoryArticles = (array) => {
                             </p>
                             <div className="rounded-full bg-black-25 w-[4px] h-[4px]" />
                         </div>
-                        <h2 className="font-NotoSerif text-h5 text-primary font-semibold transition-all ease-in-out hover:underline">
+                        <h2 className="font-NotoSerif text-h6 text-primary font-semibold uppercase transition-all ease-in-out hover:underline">
                             {article.headline}
                         </h2>
                         <p className="text-black-75 hidden lg:block font-NotoSans">

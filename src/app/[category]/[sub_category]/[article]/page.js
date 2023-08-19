@@ -126,7 +126,7 @@ export default async function Article({ params }) {
                     <span className="text-h8 md:text-h7 font-bold uppercase">
                         published :{" "}
                     </span>{" "}
-                    {articleObject.date}
+                    {articleObject.date.slice(0, 10)}
                 </p>
             </div>
             <h1 className="text-h5 sm:text-h4 md:text-h3 lg:text-h2 xl:text-h1 lg:px-128 md:px-64 text-black font-NotoSerif uppercase text-center font-bold pb-16">

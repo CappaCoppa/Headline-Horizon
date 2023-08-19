@@ -99,7 +99,7 @@ const mappingNormalArticles = (array) =>
                     </h4>
                     <div className=" flex justify-between border-t border-primary py-8 font-NotoSans ">
                         <p className=" uppercase text-primary">
-                            {articleObject.date}
+                            {articleObject.date.slice(0, 10)}
                         </p>
                         <p className=" cursor-pointer font-bold transition-all hover:underline uppercase text-secondary">
                             {articleObject.sub_category}
