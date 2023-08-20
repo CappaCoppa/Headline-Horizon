@@ -2,6 +2,7 @@ import "./globals.css";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { Noto_Serif, Noto_Sans } from "next/font/google";
+import Script from "next/script";
 
 const NotoSerif = Noto_Serif({
     subsets: ["latin"],
@@ -59,20 +60,24 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <head>
-                <script
+                <Script
                     async
                     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3446792269165420"
                     crossorigin="anonymous"
-                ></script>
-                <script
+                ></Script>
+                <Script
                     async
                     src="https://www.googletagmanager.com/gtag/js?id=G-RG4F81S1L1"
-                ></script>
-                <script>
-                    window.dataLayer = window.dataLayer || []; function gtag()
-                    {dataLayer.push(arguments)}
-                    gtag('js', new Date()); gtag('config', 'G-RG4F81S1L1')
-                </script>
+                ></Script>
+                <Script id="google-analytics">
+                    {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+ 
+          gtag('config', 'RG4F81S1L1');
+        `}
+                </Script>
             </head>
             <body
                 className={`${NotoSerif.variable} ${NotoSans.variable} overflow-x-hidden w-[100%]`}
