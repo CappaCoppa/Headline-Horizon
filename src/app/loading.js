@@ -9,6 +9,7 @@ export default async function Loading() {
                 alt={"loading spinner"}
                 width={300}
                 height={300}
+                priority={true}
             />
         </div>
     );

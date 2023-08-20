@@ -50,7 +50,7 @@ export const Footer = async () => {
                 {mappingCategories}
             </div>
             <div className="bg-primary-darker py-8 px-32  lg:px-192 flex justify-between items-center">
-                <Image src={Logo} width={40} height={40} />
+                <Image src={Logo} width={40} height={40} alt="Logo" />
                 <div className="flex flex-row gap-8 font-NotoSans text-h8 text-black-25">
                     <Link
                         className="transition-all ease-in-out hover:text-secondary"

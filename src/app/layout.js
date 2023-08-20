@@ -63,21 +63,27 @@ export default function RootLayout({ children }) {
                 <Script
                     async
                     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3446792269165420"
-                    crossorigin="anonymous"
-                ></Script>
+                    crossOrigin="anonymous"
+                    strategy="lazyOnload"
+                />
                 <Script
-                    async
+                    strategy="afterInteractive"
                     src="https://www.googletagmanager.com/gtag/js?id=G-RG4F81S1L1"
-                ></Script>
-                <Script id="google-analytics">
-                    {`
+                />
+                <Script
+                    id="google-analytics"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: `
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
- 
-          gtag('config', 'RG4F81S1L1');
-        `}
-                </Script>
+          gtag('config', 'G-RG4F81S1L1', {
+            page_path: window.location.pathname,
+          });
+        `,
+                    }}
+                />
             </head>
             <body
                 className={`${NotoSerif.variable} ${NotoSans.variable} overflow-x-hidden w-[100%]`}
