@@ -12,7 +12,7 @@ export async function generateMetadata({ params }) {
 
     const concatedDes = subCategory.description.slice(0, 147) + "...";
     return {
-        title: subCategory.title,
+        title: decodeURIComponent(subCategory.title),
         description: concatedDes,
         date: new Date(),
         url: `${process.env.API_URL}/${encodeURIComponent(
@@ -92,16 +92,17 @@ export default async function SubCategory({ params, searchParams }) {
     const show = searchParams["show"] ?? "5";
     const category = params.category;
     const subCategory = params.sub_category;
+    console.log(subCategory);
     const { articles, articlesLength } = await getSubCategoryArticles(
         category,
-        subCategory,
+        decodeURIComponent(subCategory),
         show
     );
 
     return (
         <main>
             <div className="bg-black-5 px-16 py-32 md:p-32">
-                <h1 className="text-h3 md:text-h2 capitalize font-NotoSerif tracking-wider font-medium  border-b-2 border-y-black-10">
+                <h1 className="text-h4 md:text-h4 capitalize font-NotoSerif tracking-wider border-b-2 border-y-black-10">
                     {decodeURIComponent(subCategory)}
                 </h1>
                 <div className="flex flex-row gap-16 py-16 md:py-32">

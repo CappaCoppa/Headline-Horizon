@@ -32,9 +32,10 @@ export const Header = () => {
                     <div className="  text-h2 cursor-pointer py-8 m-0  text-black-5 xl:hidden">
                         <Image
                             src={MobileH}
-                            width={80}
-                            height={80}
+                            width={48}
+                            height={48}
                             alt="mobile logo"
+                            priority={true}
                         />
                     </div>
                     <div className=" text-h2 cursor-pointer  py-8  text-black-5 hidden xl:block">
@@ -43,6 +44,7 @@ export const Header = () => {
                             width={600}
                             height={500}
                             alt="desktop logo"
+                            priority={true}
                         />
                     </div>
                 </Link>

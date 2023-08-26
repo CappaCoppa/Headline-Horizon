@@ -94,10 +94,13 @@ const mappingNormalArticles = (array) =>
                         alt={articleObject.image.image_alt}
                         loading="lazy"
                     />
-                    <h4 className="text-h6 cursor-pointer transition-all hover:underline font-semibold tracking-wider font-NotoSerif text-primary py-8 uppercase">
+                    <h4 className="text-h6 cursor-pointer border-b border-primary transition-all hover:underline font-semibold tracking-wider font-NotoSerif text-primary py-8 uppercase">
                         {articleObject.headline}
                     </h4>
-                    <div className=" flex justify-between border-t border-primary py-8 font-NotoSans ">
+                    <p className="text-black-75 hidden lg:block font-NotoSans">
+                        {`${articleObject.article}..`}
+                    </p>
+                    <div className=" flex justify-between  py-8 font-NotoSans ">
                         <p className=" uppercase text-primary">
                             {articleObject.date.slice(0, 10)}
                         </p>
