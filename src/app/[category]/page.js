@@ -1,6 +1,5 @@
 import getSubCategoryArticles from "@/utils/lib/articles/sub_category";
 import getCategory from "@/utils/lib/categories/category";
-import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -262,6 +261,6 @@ export default async function Category({ params }) {
             </div>
         );
     } else {
-        notFound();
+        throw new Error("No content found");
     }
 }

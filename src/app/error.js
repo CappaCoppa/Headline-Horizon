@@ -1,8 +1,10 @@
+"use client";
 import Link from "next/link";
+import React from "react";
 
-export default function NotFound() {
+export default function error() {
     return (
-        <div className="bg-black-5 p-32 py-64 flex flex-col justify-center items-center align-middle cursor-default">
+        <div className="bg-black-5 p-32 py-64 flex flex-col justify-center items-center align-middle cursor-default text-center">
             <h1 className="font-NotoSerif uppercase font-semibold text-black-5 bg-secondary p-16 rounded-2xl border-4 border-primary">
                 404
             </h1>

@@ -1,7 +1,6 @@
 import React, { Suspense } from "react";
 import Image from "next/image";
 import getArticle from "@/utils/lib/articles/article";
-import { notFound } from "next/navigation";
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }) {
@@ -161,6 +160,6 @@ export default async function Article({ params }) {
             </main>
         );
     } else {
-        notFound();
+        throw new Error("No content found");
     }
 }

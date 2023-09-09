@@ -3,7 +3,6 @@ import Link from "next/link";
 import getSubCategoryArticles from "@/utils/lib/articles/sub_category";
 import getCategory from "@/utils/lib/categories/category";
 import { ShowMoreButton } from "@/components/ShowMoreButton";
-import { notFound } from "next/navigation";
 
 export async function generateMetadata({ params }) {
     const response = await getCategory(params.category);
@@ -123,6 +122,6 @@ export default async function SubCategory({ params, searchParams }) {
             </main>
         );
     } else {
-        notFound();
+        throw new Error("No content found");
     }
 }
