@@ -20,7 +20,10 @@ export async function GET() {
             },
         ];
 
-        const all_articles = await collection.aggregate(pipeline).toArray();
+        const all_articles = await collection
+            .aggregate(pipeline)
+            .limit(50)
+            .toArray(); // Limiting to 50 articles here
         const response = JSON.stringify(all_articles);
 
         return new Response(response, {
