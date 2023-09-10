@@ -7,46 +7,50 @@ import { ShowMoreButton } from "@/components/ShowMoreButton";
 export async function generateMetadata({ params }) {
     const response = await getCategory(params.category);
 
-    const { category, sub_category } = response;
-    const subCategory = sub_category.find(
-        (item) => (item.title = params.sub_category)
-    );
+    if (response) {
+        const { category, sub_category } = response;
+        const subCategory = sub_category.find(
+            (item) => (item.title = params.sub_category)
+        );
 
-    const concatedDes = subCategory.description.slice(0, 147) + "...";
-    return {
-        title: decodeURIComponent(subCategory.title),
-        description: concatedDes,
-        date: new Date(),
-        url: `${process.env.API_URL}/${encodeURIComponent(
-            category.title
-        )}/${encodeURIComponent(subCategory.title)}`,
-        metadataBase: `${process.env.API_URL}`,
-        lang: "en",
-        openGraph: {
-            title: subCategory.title,
-            imageWidth: 1200,
+        const concatedDes = subCategory.description.slice(0, 147) + "...";
+        return {
+            title: decodeURIComponent(subCategory.title),
             description: concatedDes,
-            type: "website",
-            image: "../../../../public/america.webp",
+            date: new Date(),
             url: `${process.env.API_URL}/${encodeURIComponent(
                 category.title
             )}/${encodeURIComponent(subCategory.title)}`,
-            local: "en_US",
-            site_name: `Headline Horizon`,
-        },
-        twitter: {
-            title: subCategory.title,
-            description: concatedDes,
-            domain: `${process.env.API_URL}`,
-            url: `${process.env.API_URL}/${encodeURIComponent(
-                category.title
-            )}/${encodeURIComponent(subCategory.title)}`,
-            creator: "@TildonTim",
-            image: "../../../../public/america.webp",
-            card: "summary_large_image",
-            local: "en_US",
-        },
-    };
+            metadataBase: `${process.env.API_URL}`,
+            lang: "en",
+            openGraph: {
+                title: subCategory.title,
+                imageWidth: 1200,
+                description: concatedDes,
+                type: "website",
+                image: "../../../../public/america.webp",
+                url: `${process.env.API_URL}/${encodeURIComponent(
+                    category.title
+                )}/${encodeURIComponent(subCategory.title)}`,
+                local: "en_US",
+                site_name: `Headline Horizon`,
+            },
+            twitter: {
+                title: subCategory.title,
+                description: concatedDes,
+                domain: `${process.env.API_URL}`,
+                url: `${process.env.API_URL}/${encodeURIComponent(
+                    category.title
+                )}/${encodeURIComponent(subCategory.title)}`,
+                creator: "@TildonTim",
+                image: "../../../../public/america.webp",
+                card: "summary_large_image",
+                local: "en_US",
+            },
+        };
+    } else {
+        null;
+    }
 }
 
 const mappingSubCategoryArticles = (array) => {
@@ -100,20 +104,24 @@ export default async function SubCategory({ params, searchParams }) {
         show
     );
 
-    const { articles, articlesLength } = response;
-    return (
-        <main>
-            <div className="bg-black-5 px-16 py-32 md:p-32">
-                <h1 className="text-h4 md:text-h4 capitalize font-NotoSerif tracking-wider border-b-2 border-y-black-10">
-                    {decodeURIComponent(subCategory)}
-                </h1>
-                <div className="flex flex-row gap-16 py-16 md:py-32">
-                    <div className="flex flex-col gap-16">
-                        {mappingSubCategoryArticles(articles)}
+    if (response.articles.length > 0) {
+        const { articles, articlesLength } = response;
+        return (
+            <main>
+                <div className="bg-black-5 px-16 py-32 md:p-32">
+                    <h1 className="text-h4 md:text-h4 capitalize font-NotoSerif tracking-wider border-b-2 border-y-black-10">
+                        {decodeURIComponent(subCategory)}
+                    </h1>
+                    <div className="flex flex-row gap-16 py-16 md:py-32">
+                        <div className="flex flex-col gap-16">
+                            {mappingSubCategoryArticles(articles)}
+                        </div>
                     </div>
+                    <ShowMoreButton articlesLength={articlesLength} />
                 </div>
-                <ShowMoreButton articlesLength={articlesLength} />
-            </div>
-        </main>
-    );
+            </main>
+        );
+    } else {
+        throw new Error("No content found");
+    }
 }
