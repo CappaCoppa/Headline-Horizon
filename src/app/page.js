@@ -88,8 +88,8 @@ const mappingNormalArticles = (array) =>
                     href={`${articleObject.category}/${articleObject.sub_category}/${articleObject._id}`}
                 >
                     <Image
-                        width={800}
-                        height={1}
+                        width="800"
+                        height="1"
                         src={articleObject.image.image_url}
                         alt={articleObject.image.image_alt}
                         loading="lazy"
