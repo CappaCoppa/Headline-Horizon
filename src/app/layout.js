@@ -17,7 +17,7 @@ const NotoSans = Noto_Sans({
 
 export const metadata = {
     title: {
-        default: "U.S. News - In-depth American Analysis | Headline Horizon",
+        default: "U.S.A News - In-depth American Analysis | Headline Horizon",
         template: "%s - Headline Horizon",
     },
     description:

@@ -1,8 +1,14 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
         domains: ["s3.tebi.io"],
     },
+    compiler: {
+        removeConsole: true,
+    },
 };
 
-module.exports = nextConfig;
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+    enabled: process.env.ANALYZE === "true",
+});
+
+module.exports = withBundleAnalyzer(nextConfig);
