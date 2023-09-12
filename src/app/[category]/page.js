@@ -2,6 +2,8 @@ import getSubCategoryArticles from "@/utils/lib/articles/sub_category";
 import getCategory from "@/utils/lib/categories/category";
 import Link from "next/link";
 import Image from "next/image";
+import { Suspense } from "react";
+import Loading from "../loading";
 
 export async function generateMetadata({ params }) {
     const category = await getCategory(params.category);
@@ -246,19 +248,21 @@ export default async function Category({ params }) {
         );
 
         return (
-            <div className="bg-black-5 p-16 lg:px-32 lg:py-32">
-                <div className="px-16 md:px-64 pb-32 grid col-span-2 border-b-[1px] border-black-10">
-                    <Link href={`/${title}`}>
-                        <h1 className="text-h3 md:text-h2 font-NotoSerif uppercase mb-8 md:mb-16">
-                            {title}
-                        </h1>
-                    </Link>
-                    <h2 className="text-h7 md:text-h6 text-black-75">
-                        {category.category.description}
-                    </h2>
+            <Suspense fallback={<Loading />}>
+                <div className="bg-black-5 p-16 lg:px-32 lg:py-32">
+                    <div className="px-16 md:px-64 pb-32 grid col-span-2 border-b-[1px] border-black-10">
+                        <Link href={`/${title}`}>
+                            <h1 className="text-h3 md:text-h2 font-NotoSerif uppercase mb-8 md:mb-16">
+                                {title}
+                            </h1>
+                        </Link>
+                        <h2 className="text-h7 md:text-h6 text-black-75">
+                            {category.category.description}
+                        </h2>
+                    </div>
+                    <div>{mappedContent}</div>
                 </div>
-                <div>{mappedContent}</div>
-            </div>
+            </Suspense>
         );
     } else {
         throw new Error("No content found");

@@ -3,6 +3,8 @@ import Link from "next/link";
 import getSubCategoryArticles from "@/utils/lib/articles/sub_category";
 import getCategory from "@/utils/lib/categories/category";
 import { ShowMoreButton } from "@/components/ShowMoreButton";
+import { Suspense } from "react";
+import Loading from "@/app/loading";
 
 export async function generateMetadata({ params }) {
     const response = await getCategory(params.category);
@@ -107,19 +109,21 @@ export default async function SubCategory({ params, searchParams }) {
     if (response.articles.length > 0) {
         const { articles, articlesLength } = response;
         return (
-            <main>
-                <div className="bg-black-5 px-16 py-32 md:p-32">
-                    <h1 className="text-h4 md:text-h4 capitalize font-NotoSerif tracking-wider border-b-2 border-y-black-10">
-                        {decodeURIComponent(subCategory)}
-                    </h1>
-                    <div className="flex flex-row gap-16 py-16 md:py-32">
-                        <div className="flex flex-col gap-16">
-                            {mappingSubCategoryArticles(articles)}
+            <Suspense fallback={<Loading />}>
+                <main>
+                    <div className="bg-black-5 px-16 py-32 md:p-32">
+                        <h1 className="text-h4 md:text-h4 capitalize font-NotoSerif tracking-wider border-b-2 border-y-black-10">
+                            {decodeURIComponent(subCategory)}
+                        </h1>
+                        <div className="flex flex-row gap-16 py-16 md:py-32">
+                            <div className="flex flex-col gap-16">
+                                {mappingSubCategoryArticles(articles)}
+                            </div>
                         </div>
+                        <ShowMoreButton articlesLength={articlesLength} />
                     </div>
-                    <ShowMoreButton articlesLength={articlesLength} />
-                </div>
-            </main>
+                </main>
+            </Suspense>
         );
     } else {
         throw new Error("No content found");
