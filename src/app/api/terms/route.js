@@ -1,28 +1,37 @@
 import path from "path";
 import { promises as fs } from "fs";
 
-// Declare common headers
-const commonHeaders = {
-    "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type, Authorization",
-};
-
 export async function GET(req, res) {
     try {
-        // Define the absolute path of the JSON file
-        const jsonFilePath = path.join(
-            __dirname,
-            "./src/utils/json/terms.json"
+        // Find the absolute path of the json directory
+        const jsonDirectory = path.join(process.cwd());
+        // Read the json data file data.json
+        const fileContents = await fs.readFile(
+            path.join(jsonDirectory, "./src/utils/json/terms.json"),
+            "utf8"
         );
 
-        // Read the JSON data file
-        const fileContents = await fs.readFile(jsonFilePath, "utf8");
-
-        // Return the content of the data file in JSON format
-        res.status(200).set(commonHeaders).send(fileContents);
+        // Return the content of the data file in json format
+        return new Response(fileContents, {
+            status: 200,
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods":
+                    "GET, POST, PUT, DELETE, OPTIONS",
+                "Access-Control-Allow-Headers": "Content-Type, Authorization",
+            },
+        });
     } catch (e) {
-        res.status(400).set(commonHeaders).send(JSON.stringify(e));
+        return new Response(JSON.stringify(err), {
+            status: 400,
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods":
+                    "GET, POST, PUT, DELETE, OPTIONS",
+                "Access-Control-Allow-Headers": "Content-Type, Authorization",
+            },
+        });
     }
 }
