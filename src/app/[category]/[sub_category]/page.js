@@ -106,7 +106,7 @@ export default async function SubCategory({ params, searchParams }) {
         show
     );
 
-    if (response) {
+    if (response.articles.length > 0) {
         const { articles, articlesLength } = response;
         return (
             <Suspense fallback={<Loading />}>

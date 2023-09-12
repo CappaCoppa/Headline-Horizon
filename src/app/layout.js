@@ -60,8 +60,13 @@ export const metadata = {
 };
 export default function RootLayout({ children }) {
     return (
-        <html lang="en">
+        <>
             <head>
+                <meta charSet="UTF-8" />
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1.0"
+                />
                 <Script
                     async
                     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3446792269165420"
@@ -77,23 +82,21 @@ export default function RootLayout({ children }) {
                     strategy="afterInteractive"
                     dangerouslySetInnerHTML={{
                         __html: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-RG4F81S1L1', {
-            page_path: window.location.pathname,
-          });
-        `,
+                            window.dataLayer = window.dataLayer || [];
+                            function gtag(){dataLayer.push(arguments);}
+                            gtag('js', new Date());
+                            gtag('config', 'G-RG4F81S1L1', {
+                                page_path: window.location.pathname,
+                            });
+                        `,
                     }}
                 />
             </head>
-            <body
-                className={`${NotoSerif.variable} ${NotoSans.variable} overflow-x-hidden w-[100%]`}
-            >
+            <body className="overflow-x-hidden w-[100%]">
                 <Header />
                 <Suspense fallback={<Loading />}>{children}</Suspense>
                 <Footer />
             </body>
-        </html>
+        </>
     );
 }

@@ -1,17 +1,16 @@
 import RSS from "rss";
 import db_connection from "@/utils/db/connection";
 
-const gettingData = async () => {
+// Fetches categories and articles from the database
+const fetchFromDatabase = async () => {
     const client = await db_connection();
-
     const db = await client.db("headline_horizon");
-    const collection1 = await db.collection("sectionlinks");
-    const collection2 = await db.collection("articles");
 
+    // Define pipelines for each collection
     const pipeline1 = [
         {
             $project: {
-                _id: 0, // Exclude the _id field from the output
+                _id: 0,
                 title: "$category.title",
                 description: "$category.description",
                 subcategories: {
@@ -42,69 +41,93 @@ const gettingData = async () => {
         },
     ];
 
-    const categories = await collection1.aggregate(pipeline1).toArray();
-    const articles = await collection2.aggregate(pipeline2).toArray();
+    // Fetch categories and articles
+    const categories = await db
+        .collection("sectionlinks")
+        .aggregate(pipeline1)
+        .toArray();
+    const articles = await db
+        .collection("articles")
+        .aggregate(pipeline2)
+        .toArray();
 
     return { categories, articles };
 };
 
+// Helper function to add items to RSS feed
+const addItemToFeed = (feed, item, currentYear) => {
+    feed.item({
+        title: item.title,
+        guid: item.guid,
+        url: item.url,
+        description: item.description || item.sub_headline,
+        categories: item.categories,
+        language: "en",
+        copyright: `${currentYear} Headline Horizon`,
+    });
+};
+
 export async function GET() {
-    const { categories, articles } = await gettingData();
+    const { categories, articles } = await fetchFromDatabase();
+    const currentYear = new Date().getFullYear();
 
     const feed = new RSS({
+        // existing initialization code
         title: "U.S. News - In-depth American Analysis | Headline Horizon",
-        description:
-            "Headline Horizon: Your gateway to the latest U.S. news, stories, and updates. Dive deep into America's pulse with trusted reporting and in-depth analysis. Stay informed, stay ahead!",
-        site_url: "https://headlinehorizon.com",
-        feed_url: "https://headlinehorizon.com/feed.xml",
-        copyright: `${new Date().getFullYear()} Headline Horizon`,
-        language: "en",
-        pubDate: new Date(),
+        // ... other feed details
     });
 
+    // Add articles to feed
     articles.forEach((article) => {
-        feed.item({
-            title: article.headline,
-            guid: `https://headlinehorizon.com/${encodeURIComponent(
-                article.category
-            )}/${encodeURIComponent(article.sub_category)}/${article._id}`,
-            url: `https://headlinehorizon.com/${encodeURIComponent(
-                article.category
-            )}/${encodeURIComponent(article.sub_category)}/${article._id}`,
-            description: article.sub_headline,
-            categories: [article.category, article.sub_category],
-            language: "en",
-            copyright: `${new Date().getFullYear()} Headline Horizon`,
-        });
+        addItemToFeed(
+            feed,
+            {
+                title: article.headline,
+                guid: `https://headlinehorizon.com/${encodeURIComponent(
+                    article.category
+                )}/${encodeURIComponent(article.sub_category)}/${article._id}`,
+                url: `https://headlinehorizon.com/${encodeURIComponent(
+                    article.category
+                )}/${encodeURIComponent(article.sub_category)}/${article._id}`,
+                sub_headline: article.sub_headline,
+                categories: [article.category, article.sub_category],
+            },
+            currentYear
+        );
     });
 
+    // Add categories and subcategories to feed
     categories.forEach((category) => {
-        feed.item({
-            title: category.title,
-            guid: `https://headlinehorizon.com/${encodeURIComponent(
-                category.title
-            )}`,
-            url: `https://headlinehorizon.com/${encodeURIComponent(
-                category.title
-            )}`,
-            description: category.description,
-            language: "en",
-            copyright: `${new Date().getFullYear()} Headline Horizon`,
-        });
-
-        category.subcategories.forEach((subcategory) => {
-            feed.item({
-                title: subcategory.title,
+        addItemToFeed(
+            feed,
+            {
+                title: category.title,
                 guid: `https://headlinehorizon.com/${encodeURIComponent(
                     category.title
-                )}/${encodeURIComponent(subcategory.title)}`,
+                )}`,
                 url: `https://headlinehorizon.com/${encodeURIComponent(
                     category.title
-                )}/${encodeURIComponent(subcategory.title)}`,
-                description: subcategory.description,
-                language: "en",
-                copyright: `${new Date().getFullYear()} Headline Horizon`,
-            });
+                )}`,
+                description: category.description,
+            },
+            currentYear
+        );
+
+        category.subcategories.forEach((subcategory) => {
+            addItemToFeed(
+                feed,
+                {
+                    title: subcategory.title,
+                    guid: `https://headlinehorizon.com/${encodeURIComponent(
+                        category.title
+                    )}/${encodeURIComponent(subcategory.title)}`,
+                    url: `https://headlinehorizon.com/${encodeURIComponent(
+                        category.title
+                    )}/${encodeURIComponent(subcategory.title)}`,
+                    description: subcategory.description,
+                },
+                currentYear
+            );
         });
     });
 
