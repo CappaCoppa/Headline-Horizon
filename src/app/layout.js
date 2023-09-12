@@ -3,6 +3,8 @@ import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { Noto_Serif, Noto_Sans } from "next/font/google";
 import Script from "next/script";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 const NotoSerif = Noto_Serif({
     subsets: ["latin"],
@@ -89,7 +91,7 @@ export default function RootLayout({ children }) {
                 className={`${NotoSerif.variable} ${NotoSans.variable} overflow-x-hidden w-[100%]`}
             >
                 <Header />
-                {children}
+                <Suspense fallback={<Loading />}>{children}</Suspense>
                 <Footer />
             </body>
         </html>

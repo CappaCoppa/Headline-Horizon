@@ -31,8 +31,6 @@ export default async function sitemap() {
                 sub_category: 1,
                 headline: 1,
                 date: 1,
-                image: { $arrayElemAt: ["$images", 0] },
-                article: { $arrayElemAt: ["$article", 0] },
             },
         },
     ];
