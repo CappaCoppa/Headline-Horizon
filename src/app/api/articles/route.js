@@ -18,12 +18,15 @@ export async function GET() {
                     article: { $arrayElemAt: ["$article", 0] },
                 },
             },
+            {
+                $sort: { date: -1 }, // Sort by date in descending order
+            },
         ];
 
         const all_articles = await collection
             .aggregate(pipeline)
-            .limit(50)
-            .toArray(); // Limiting to 50 articles here
+            .limit(100) // Limiting to 100 articles here
+            .toArray();
         const response = JSON.stringify(all_articles);
 
         return new Response(response, {
