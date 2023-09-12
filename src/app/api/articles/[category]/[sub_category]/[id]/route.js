@@ -8,17 +8,32 @@ export async function GET(req, { params }) {
         const article = await collection.findOne({
             _id: Number(params.id),
         });
-        const response = JSON.stringify(article);
-        return new Response(response, {
-            status: 200,
-            headers: {
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Methods":
-                    "GET, POST, PUT, DELETE, OPTIONS",
-                "Access-Control-Allow-Headers": "Content-Type, Authorization",
-            },
-        });
+        if (article) {
+            const response = JSON.stringify(article);
+            return new Response(response, {
+                status: 200,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods":
+                        "GET, POST, PUT, DELETE, OPTIONS",
+                    "Access-Control-Allow-Headers":
+                        "Content-Type, Authorization",
+                },
+            });
+        } else {
+            return new Response(null, {
+                status: 400,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods":
+                        "GET, POST, PUT, DELETE, OPTIONS",
+                    "Access-Control-Allow-Headers":
+                        "Content-Type, Authorization",
+                },
+            });
+        }
     } catch (e) {
         return new Response(JSON.stringify(e), {
             status: 500,

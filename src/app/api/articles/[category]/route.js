@@ -10,16 +10,31 @@ export async function GET(req, { params }) {
             .find({ category: category })
             .toArray();
         const response = JSON.stringify(articles);
-        return new Response(response, {
-            status: 200,
-            headers: {
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Methods":
-                    "GET, POST, PUT, DELETE, OPTIONS",
-                "Access-Control-Allow-Headers": "Content-Type, Authorization",
-            },
-        });
+        if (response) {
+            return new Response(response, {
+                status: 200,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods":
+                        "GET, POST, PUT, DELETE, OPTIONS",
+                    "Access-Control-Allow-Headers":
+                        "Content-Type, Authorization",
+                },
+            });
+        } else {
+            return new Response(null, {
+                status: 400,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods":
+                        "GET, POST, PUT, DELETE, OPTIONS",
+                    "Access-Control-Allow-Headers":
+                        "Content-Type, Authorization",
+                },
+            });
+        }
     } catch (e) {
         console.log(e);
         return new Response(JSON.stringify(e), {

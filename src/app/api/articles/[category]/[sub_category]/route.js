@@ -38,25 +38,40 @@ export async function GET(req, { params }) {
             .limit(Number(show))
             .toArray();
 
-        const response = {
-            articles: articles,
-            articlesLength: totalDocs,
-        };
+        if (articles) {
+            const response = {
+                articles: articles,
+                articlesLength: totalDocs,
+            };
 
-        return new Response(JSON.stringify(response), {
-            status: 200,
-            headers: {
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Methods":
-                    "GET, POST, PUT, DELETE, OPTIONS",
-                "Access-Control-Allow-Headers": "Content-Type, Authorization",
-            },
-        });
+            return new Response(JSON.stringify(response), {
+                status: 200,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods":
+                        "GET, POST, PUT, DELETE, OPTIONS",
+                    "Access-Control-Allow-Headers":
+                        "Content-Type, Authorization",
+                },
+            });
+        } else {
+            return new Response(null, {
+                status: 400,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods":
+                        "GET, POST, PUT, DELETE, OPTIONS",
+                    "Access-Control-Allow-Headers":
+                        "Content-Type, Authorization",
+                },
+            });
+        }
     } catch (e) {
         console.log(e);
         return new Response(JSON.stringify(e), {
-            status: 400,
+            status: 500,
             headers: {
                 "Content-Type": "application/json",
                 "Access-Control-Allow-Origin": "*",
